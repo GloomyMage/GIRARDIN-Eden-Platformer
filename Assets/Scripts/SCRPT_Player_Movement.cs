@@ -64,18 +64,6 @@ public class SCRPT_Player_Movement : MonoBehaviour
         }
 
 
-        // Attack
-        if (Input.GetKeyDown(KeyCode.Keypad1)) // When the Keypad 1 is pressed once, the whole animation plays out
-        {
-            Player_Animator.SetTrigger("TriggerAttack"); // The Attack animation is triggered
-        }
-
-        // Crouch
-        if (Input.GetKeyDown(KeyCode.Keypad2)) // When the Keypad 2 is pressed once, the whole animation plays out
-        {
-            Player_Animator.SetTrigger("TriggerCrouch"); // The Crouch animation is triggered
-        }
-
         // Jump
         if (Input.GetKeyDown(KeyCode.Space) && Jumping == false)
         {
@@ -99,6 +87,20 @@ public class SCRPT_Player_Movement : MonoBehaviour
             transform.Translate(Vector3.right * movement_speed * Time.deltaTime, Space.World);  // Moves positively on the X axis, therefore to the right
             Player_Animator.SetBool("BoolRun", true); // Run animation is triggered
             sprite_renderer.flipX = false; // The run animation doesn't need to be flipped because it is already facing to the right
+        }
+
+        // Transparent
+        if (Input.GetKey(KeyCode.DownArrow))
+        {
+           Color col  = sprite_renderer.color;
+            col.a = 0.25f;
+            sprite_renderer.color = col;
+        }
+        else
+        {
+            Color col = sprite_renderer.color;
+            col.a = 1;
+            sprite_renderer.color = col;
         }
 
     }
