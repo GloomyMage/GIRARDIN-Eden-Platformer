@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class SCRPT_Patrol : MonoBehaviour
 {
-    [SerializeField] float enemy_speed = 1f;
-    [SerializeField] float distance = 1f;
+    [SerializeField] float enemy_speed = 5f;
+    [SerializeField] float distance = 2f;
     private bool movingRight = true;
     public Transform ground_Detection;
 
