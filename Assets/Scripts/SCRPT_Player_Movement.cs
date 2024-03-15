@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class SCRPT_Player_Movement : MonoBehaviour
@@ -202,23 +201,20 @@ public class SCRPT_Player_Movement : MonoBehaviour
     }
 
 
-   private void OnTriggerEnter2D(Collider2D SolDetection1)
+    private void OnTriggerEnter2D(Collider2D SolDetection1)
     {
         Jumping = false;
-         Debug.Log("Coucou");
+        Debug.Log("Coucou");
     }
     private void ExitTriggerEnter2D(Collider2D SolDetection1)
     {
         Jumping = true;
     }
 
-   private void OnTriggerEnter(Collider other)
+   /* private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.tag == "Enemy");
-        {
-            Debug.Log("damage");
-        }
+        if (other.tag == "Enemy") ;
     }
-
+   */
 }
 
