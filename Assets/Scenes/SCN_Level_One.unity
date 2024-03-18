@@ -1623,6 +1623,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1142656401440460092, guid: 9b1d31e0086de2342b693bdf2514be71,
+        type: 3}
+      propertyPath: playerHealth
+      value: 
+      objectReference: {fileID: 1265917918}
+    - target: {fileID: 1566846824500722095, guid: 9b1d31e0086de2342b693bdf2514be71,
+        type: 3}
+      propertyPath: patrolDestination
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1566846824500722095, guid: 9b1d31e0086de2342b693bdf2514be71,
+        type: 3}
+      propertyPath: patrolPoints.Array.data[0]
+      value: 
+      objectReference: {fileID: 80572805}
+    - target: {fileID: 1566846824500722095, guid: 9b1d31e0086de2342b693bdf2514be71,
+        type: 3}
+      propertyPath: patrolPoints.Array.data[1]
+      value: 
+      objectReference: {fileID: 1106513764}
     - target: {fileID: 3876426148983860883, guid: 9b1d31e0086de2342b693bdf2514be71,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1919,13 +1939,13 @@ MonoBehaviour:
   anim: {fileID: 0}
   JumpAmount: 10
   Jumping: 1
-  Ground_Detector: {fileID: 1146430408}
+  Ground_Detector: {fileID: 455431667}
   checkRadius: 0.3
   whatIsGround:
     serializedVersion: 2
     m_Bits: 256
   jumpTimeCounter: 0
-  jumpTime: 0.33
+  jumpTime: 0.3
   Particle_LandEffect: {fileID: 0}
   SND_landing_Sound: {fileID: 8300000, guid: b6b64a5d2b0aa3745992395f75039438, type: 3}
   SND_transparent_Sound: {fileID: 8300000, guid: f7d95d275bdb47d4d8abc9d56fec8715,

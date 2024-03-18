@@ -86,6 +86,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 4075787303153889266}
+    - targetCorrespondingSourceObject: {fileID: 7766511436806388832, guid: 0173d8872924e9a40bb7cac5afe866fd,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1566846824500722095}
   m_SourcePrefab: {fileID: 100100000, guid: 0173d8872924e9a40bb7cac5afe866fd, type: 3}
 --- !u!1 &5401711773140845105 stripped
 GameObject:
@@ -105,3 +109,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 861f62b29737f3a4f82aaebca93f1991, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1566846824500722095
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5401711773140845105}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3c2662eab9ab0241a1c07cbaa0fd01d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  patrolPoints:
+  - {fileID: 0}
+  - {fileID: 0}
+  patrolDestination: 0
+  movespeed: 1

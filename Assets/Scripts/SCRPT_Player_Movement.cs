@@ -10,8 +10,8 @@ public class SCRPT_Player_Movement : MonoBehaviour
     void Start()
     {
         source = GetComponent<AudioSource>();
-        rb = GetComponent <Rigidbody2D>();
-        anim = GetComponent <Animator>();
+        rb = GetComponent<Rigidbody2D>();
+        anim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -92,11 +92,12 @@ public class SCRPT_Player_Movement : MonoBehaviour
         }
         */
 
-        if(moveInput > 0)
+        if (moveInput > 0)
         {
             transform.eulerAngles = new Vector3(0, 0, 0);
         }
-        else if (moveInput < 0) {
+        else if (moveInput < 0)
+        {
             transform.eulerAngles = new Vector3(0, 180, 0);
         }
 
@@ -105,7 +106,7 @@ public class SCRPT_Player_Movement : MonoBehaviour
 
         isGrounded = Physics2D.OverlapCircle(Ground_Detector.position, checkRadius, whatIsGround);
 
-        if (isGrounded == true && Input.GetKeyDown(KeyCode.Space)) 
+        if (isGrounded == true && Input.GetKeyDown(KeyCode.Space))
         {
             Jumping = true;
             jumpTimeCounter = jumpTime;
@@ -117,17 +118,19 @@ public class SCRPT_Player_Movement : MonoBehaviour
             if (jumpTimeCounter > 0)
             {
                 rb.velocity = (Vector2.up * JumpAmount);
-                jumpTimeCounter -= Time.deltaTime; 
+                jumpTimeCounter -= Time.deltaTime;
             }
             else
             {
                 Jumping = false;
             }
 
-            if (Input.GetKeyUp (KeyCode.Space))
-            {
-                Jumping = false;
-            }
+           
+        }
+
+        if (Input.GetKeyUp(KeyCode.Space))
+        {
+            Jumping = false;
         }
 
         /*
@@ -182,13 +185,13 @@ public class SCRPT_Player_Movement : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.DownArrow))
         {
             source.clip = SND_transparent_Sound;
-        source.Play();
+            source.Play();
         }
 
         // Transparent
         if (Input.GetKey(KeyCode.DownArrow))
         {
-            Color col  = sprite_renderer.color;
+            Color col = sprite_renderer.color;
             col.a = 0.25f;
             sprite_renderer.color = col;
         }
@@ -202,23 +205,14 @@ public class SCRPT_Player_Movement : MonoBehaviour
     }
 
 
-   private void OnTriggerEnter2D(Collider2D SolDetection1)
+    private void OnTriggerEnter2D(Collider2D SolDetection1)
     {
         Jumping = false;
-         Debug.Log("Coucou");
+        Debug.Log("Coucou");
     }
     private void ExitTriggerEnter2D(Collider2D SolDetection1)
     {
         Jumping = true;
     }
-
-   private void OnTriggerEnter(Collider other)
-    {
-        if (other.tag == "Enemy");
-        {
-            Debug.Log("damage");
-        }
-    }
-
 }
 
