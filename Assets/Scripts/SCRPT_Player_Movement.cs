@@ -1,8 +1,10 @@
+using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class SCRPT_Player_Movement : MonoBehaviour
 {
@@ -124,11 +126,14 @@ public class SCRPT_Player_Movement : MonoBehaviour
                 Jumping = false;
             }
 
-            if (Input.GetKeyUp (KeyCode.Space))
-            {
-                Jumping = false;
-            }
         }
+
+        if (Input.GetKeyUp(KeyCode.Space))
+        {
+            Jumping = false;
+        }
+
+
 
         /*
         if (Input.GetKeyDown(KeyCode.Space) && Jumping == false)
@@ -201,8 +206,15 @@ public class SCRPT_Player_Movement : MonoBehaviour
 
     }
 
+    //public void Jump(InputAction.CallbackContext context)
+    //{
+    //    if (context.performed)
+    //    {
+    //        rb.velocity = (Vector2.up * JumpAmount);
+    //    }
+    //}
 
-   private void OnTriggerEnter2D(Collider2D SolDetection1)
+    private void OnTriggerEnter2D(Collider2D SolDetection1)
     {
         Jumping = false;
          Debug.Log("Coucou");
