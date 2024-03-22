@@ -24,8 +24,7 @@ public class SCRPT_Player_Movement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        moveInput = Input.GetAxis("Horizontal");
-        rb.velocity = new Vector2(moveInput * movement_speed, rb.velocity.y);
+        lateral();
     }
 
     // Set speed movement speed
@@ -53,6 +52,13 @@ public class SCRPT_Player_Movement : MonoBehaviour
 
     public AudioClip SND_landing_Sound;
     public AudioClip SND_transparent_Sound;
+
+    void lateral()
+    {
+        moveInput = Input.GetAxis("Horizontal");
+        rb.velocity = new Vector2(moveInput * movement_speed, rb.velocity.y);
+        Debug.Log("update");
+    }
 
 
     void movement()
