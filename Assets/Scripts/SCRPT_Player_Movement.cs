@@ -1,8 +1,10 @@
+using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class SCRPT_Player_Movement : MonoBehaviour
 {
@@ -22,8 +24,7 @@ public class SCRPT_Player_Movement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        moveInput = Input.GetAxis("Horizontal");
-        rb.velocity = new Vector2(moveInput * movement_speed, rb.velocity.y);
+        lateral();
     }
 
     // Set speed movement speed
@@ -51,6 +52,13 @@ public class SCRPT_Player_Movement : MonoBehaviour
 
     public AudioClip SND_landing_Sound;
     public AudioClip SND_transparent_Sound;
+
+    void lateral()
+    {
+        moveInput = Input.GetAxis("Horizontal");
+        rb.velocity = new Vector2(moveInput * movement_speed, rb.velocity.y);
+        Debug.Log("update");
+    }
 
 
     void movement()
@@ -125,13 +133,23 @@ public class SCRPT_Player_Movement : MonoBehaviour
                 Jumping = false;
             }
 
+<<<<<<< HEAD
            
         }
 
         if (Input.GetKeyUp(KeyCode.Space))
         {
             Jumping = false;
+=======
+>>>>>>> 2b0b00565a312ed57c76c6d37c0ab01f844ce6f9
         }
+
+        if (Input.GetKeyUp(KeyCode.Space))
+        {
+            Jumping = false;
+        }
+
+
 
         /*
         if (Input.GetKeyDown(KeyCode.Space) && Jumping == false)
@@ -204,6 +222,13 @@ public class SCRPT_Player_Movement : MonoBehaviour
 
     }
 
+    //public void Jump(InputAction.CallbackContext context)
+    //{
+    //    if (context.performed)
+    //    {
+    //        rb.velocity = (Vector2.up * JumpAmount);
+    //    }
+    //}
 
     private void OnTriggerEnter2D(Collider2D SolDetection1)
     {
