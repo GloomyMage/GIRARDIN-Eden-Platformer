@@ -276,7 +276,7 @@ Transform:
   m_GameObject: {fileID: 80572804}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.8, z: 0}
+  m_LocalPosition: {x: 0, y: -1.4, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1534,7 +1534,7 @@ Transform:
   m_GameObject: {fileID: 543395744}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: -10}
+  m_LocalPosition: {x: 0, y: 1, z: -28.25}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1643,6 +1643,11 @@ PrefabInstance:
       propertyPath: patrolPoints.Array.data[1]
       value: 
       objectReference: {fileID: 1106513764}
+    - target: {fileID: -791964221060890387, guid: 9b1d31e0086de2342b693bdf2514be71,
+        type: 3}
+      propertyPath: sprite_renderer
+      value: 
+      objectReference: {fileID: 930685355}
     - target: {fileID: 3876426148983860883, guid: 9b1d31e0086de2342b693bdf2514be71,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1713,11 +1718,51 @@ PrefabInstance:
       propertyPath: patrolPoints.Array.data[1]
       value: 
       objectReference: {fileID: 1106513764}
-    m_RemovedComponents: []
+    - target: {fileID: 7827924867628523507, guid: 9b1d31e0086de2342b693bdf2514be71,
+        type: 3}
+      propertyPath: m_FlipX
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 4075787303153889266, guid: 9b1d31e0086de2342b693bdf2514be71, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5401711773140845105, guid: 9b1d31e0086de2342b693bdf2514be71,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 930685350}
   m_SourcePrefab: {fileID: 100100000, guid: 9b1d31e0086de2342b693bdf2514be71, type: 3}
+--- !u!1 &930685349 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5401711773140845105, guid: 9b1d31e0086de2342b693bdf2514be71,
+    type: 3}
+  m_PrefabInstance: {fileID: 930685348}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &930685350
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 930685349}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3c2662eab9ab0241a1c07cbaa0fd01d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sprite_renderer: {fileID: 930685355}
+  patrolPoints:
+  - {fileID: 80572805}
+  - {fileID: 1106513764}
+  patrolDestination: 0
+  movespeed: 3
+--- !u!212 &930685355 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 7827924867628523507, guid: 9b1d31e0086de2342b693bdf2514be71,
+    type: 3}
+  m_PrefabInstance: {fileID: 930685348}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1106513763
 GameObject:
   m_ObjectHideFlags: 0
@@ -1743,7 +1788,7 @@ Transform:
   m_GameObject: {fileID: 1106513763}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -10, y: -0.8, z: 0}
+  m_LocalPosition: {x: -10, y: -1.4, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
