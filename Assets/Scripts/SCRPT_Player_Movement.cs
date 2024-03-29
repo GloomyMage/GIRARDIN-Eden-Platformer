@@ -133,15 +133,12 @@ public class SCRPT_Player_Movement : MonoBehaviour
                 Jumping = false;
             }
 
-<<<<<<< HEAD
            
         }
 
         if (Input.GetKeyUp(KeyCode.Space))
         {
             Jumping = false;
-=======
->>>>>>> 2b0b00565a312ed57c76c6d37c0ab01f844ce6f9
         }
 
         if (Input.GetKeyUp(KeyCode.Space))
