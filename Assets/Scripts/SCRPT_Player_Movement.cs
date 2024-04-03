@@ -27,18 +27,25 @@ public class SCRPT_Player_Movement : MonoBehaviour
         lateral();
     }
 
-    // Set speed movement speed
-    [SerializeField] float movement_speed = 1f;
-    private float moveInput;
+    // Attributes
     [SerializeField] Animator Player_Animator;
     [SerializeField] SpriteRenderer sprite_renderer;
     [SerializeField] Rigidbody2D rb;
     [SerializeField] Animator anim;
 
-    [SerializeField] float JumpAmount = 10;
-    [SerializeField] bool Jumping = false;
-    // [SerializeField] GameObject Ground_Detector;
+    // Knockback
+    public float KBForce = 5;
+    public float KBCounter = 0;
+    public float KBTotalTime = 0.2f;
+    public bool KnockFromRight;
 
+    // Set speed movement speed
+    [SerializeField] float movement_speed = 1f;
+    private float moveInput;
+
+    // Jump
+    [SerializeField] float JumpAmount = 5;
+    [SerializeField] bool Jumping = false;
     private bool isGrounded;
     public Transform Ground_Detector;
     public float checkRadius;
@@ -46,18 +53,38 @@ public class SCRPT_Player_Movement : MonoBehaviour
     public float jumpTimeCounter;
     [SerializeField] float jumpTime = 0.33f;
 
+    // Particle
     [SerializeField] GameObject Particle_LandEffect;
     private bool spawnParticle_Land;
     private AudioSource source;
 
+    // Audio
     public AudioClip SND_landing_Sound;
     public AudioClip SND_transparent_Sound;
 
+    // Movement
     void lateral()
     {
-        moveInput = Input.GetAxis("Horizontal");
-        rb.velocity = new Vector2(moveInput * movement_speed, rb.velocity.y);
-        Debug.Log("update");
+        if (KBCounter <= 0)
+        {
+            moveInput = Input.GetAxis("Horizontal");
+            rb.velocity = new Vector2(moveInput * movement_speed, rb.velocity.y);
+            Debug.Log("update");
+        }
+
+        else
+        {
+            if (KnockFromRight == true)
+            {
+                rb.velocity = new Vector2(-KBForce, KBForce);
+            }
+            else if (KnockFromRight == false)
+            {
+                rb.velocity = new Vector2(KBForce, KBForce);
+            }
+        }
+
+        KBCounter -= Time.deltaTime;
     }
 
 
@@ -196,7 +223,6 @@ public class SCRPT_Player_Movement : MonoBehaviour
         // TrailVFX
         if ()
         */
-
         if (Input.GetKeyDown(KeyCode.DownArrow))
         {
             source.clip = SND_transparent_Sound;
@@ -207,7 +233,7 @@ public class SCRPT_Player_Movement : MonoBehaviour
         if (Input.GetKey(KeyCode.DownArrow))
         {
             Color col = sprite_renderer.color;
-            col.a = 0.25f;
+            col.a = 0.333f;
             sprite_renderer.color = col;
         }
         else
