@@ -5,6 +5,7 @@ using System.Runtime.CompilerServices;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Rendering.Universal;
 
 public class SCRPT_Player_Movement : MonoBehaviour
 {
@@ -26,6 +27,9 @@ public class SCRPT_Player_Movement : MonoBehaviour
     {
         lateral();
     }
+
+   public Light2D Intensity;
+    public SCRPT_PatrolBorder Ghost;
 
     // Attributes
     [SerializeField] Animator Player_Animator;
@@ -235,12 +239,15 @@ public class SCRPT_Player_Movement : MonoBehaviour
             Color col = sprite_renderer.color;
             col.a = 0.333f;
             sprite_renderer.color = col;
+            Intensity.intensity = 0.15f;
+            Ghost.isChasing = false;
         }
         else
         {
             Color col = sprite_renderer.color;
             col.a = 1;
             sprite_renderer.color = col;
+            Intensity.intensity = 1f;
         }
 
     }
