@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SCRPT_PatrolBorder : MonoBehaviour
+public class SCRPT_MovingPlatform : MonoBehaviour
 {
     public SpriteRenderer sprite_renderer;
     public Transform[] patrolPoints;
@@ -11,10 +11,10 @@ public class SCRPT_PatrolBorder : MonoBehaviour
 
     void Update()
     {
-        move();
+        platform();
     }
 
-    private void move()
+    private void platform()
     {
         if (patrolDestination == 0)
         {
@@ -36,4 +36,21 @@ public class SCRPT_PatrolBorder : MonoBehaviour
             }
         }
     }
+        private void OnTriggerEnter2D(Collider2D collision)
+        {
+            if (collision.CompareTag("Player"))
+            {
+                collision.transform.parent = this.transform;
+            }
+        }
+
+        private void OnTriggerExit2D(Collider2D collision)
+        {
+            if (collision.CompareTag("Player"))
+            {
+                collision.transform.parent = null;
+            }
+        }
+ 
+
 }

@@ -85,7 +85,7 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 7766511436806388832, guid: 0173d8872924e9a40bb7cac5afe866fd,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1566846824500722095}
+      addedObject: {fileID: 8686208094954856106}
   m_SourcePrefab: {fileID: 100100000, guid: 0173d8872924e9a40bb7cac5afe866fd, type: 3}
 --- !u!1 &5401711773140845105 stripped
 GameObject:
@@ -93,7 +93,7 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 2395507341714882129}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1566846824500722095
+--- !u!114 &8686208094954856106
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -102,21 +102,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 5401711773140845105}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e3c2662eab9ab0241a1c07cbaa0fd01d, type: 3}
+  m_Script: {fileID: 11500000, guid: c66bc1a2c8d9aa147ab2259c63a01f7e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sprite_renderer: {fileID: 7827924867628523507}
+  sprite_renderer: {fileID: 0}
   patrolPoints:
   - {fileID: 0}
   - {fileID: 0}
   patrolDestination: 0
-  movespeed: 1
+  movespeed: 3
   playerTransform: {fileID: 0}
   isChasing: 0
-  chaseDistance: 0
---- !u!212 &7827924867628523507 stripped
-SpriteRenderer:
-  m_CorrespondingSourceObject: {fileID: 5592605478865641890, guid: 0173d8872924e9a40bb7cac5afe866fd,
-    type: 3}
-  m_PrefabInstance: {fileID: 2395507341714882129}
-  m_PrefabAsset: {fileID: 0}
+  chaseDistance: 2

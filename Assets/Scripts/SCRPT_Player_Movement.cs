@@ -6,6 +6,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Rendering.Universal;
+using UnityEngine.SceneManagement;
 
 public class SCRPT_Player_Movement : MonoBehaviour
 {
@@ -15,6 +16,10 @@ public class SCRPT_Player_Movement : MonoBehaviour
         source = GetComponent<AudioSource>();
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
+
+        // Scene Manager
+        Scene currentScene = SceneManager.GetActiveScene();
+        sceneName = currentScene.name;
     }
 
     // Update is called once per frame
@@ -28,43 +33,55 @@ public class SCRPT_Player_Movement : MonoBehaviour
         lateral();
     }
 
-   public Light2D Intensity;
-    public SCRPT_PatrolBorder Ghost;
+    // Other Scripts
+    [Header("----------===== Other Scripts =====----------")]
+    public Light2D Intensity;
+    public SCRPT_Chase Ghost;
+    public SCRPT_ParticleController ParticleController;
 
     // Attributes
+    [Header ("----------=====  Attributes  =====----------")]
     [SerializeField] Animator Player_Animator;
     [SerializeField] SpriteRenderer sprite_renderer;
     [SerializeField] Rigidbody2D rb;
     [SerializeField] Animator anim;
 
     // Knockback
+    [Header("----------===== Knockback =====----------")]
     public float KBForce = 5;
     public float KBCounter = 0;
     public float KBTotalTime = 0.2f;
     public bool KnockFromRight;
 
     // Set speed movement speed
+    [Header("----------===== Speed =====----------")]
     [SerializeField] float movement_speed = 1f;
     private float moveInput;
 
     // Jump
+    [Header("----------===== Jump =====----------")]
     [SerializeField] float JumpAmount = 5;
     [SerializeField] bool Jumping = false;
-    private bool isGrounded;
+    public bool isGrounded;
     public Transform Ground_Detector;
     public float checkRadius;
     public LayerMask whatIsGround;
     public float jumpTimeCounter;
     [SerializeField] float jumpTime = 0.33f;
 
-    // Particle
-    [SerializeField] GameObject Particle_LandEffect;
-    private bool spawnParticle_Land;
-    private AudioSource source;
+    // Particles
+    [Header("----------===== Particles =====----------")]
 
     // Audio
+    [Header("----------===== Audio =====----------")]
+    [SerializeField] AudioSource source;
     public AudioClip SND_landing_Sound;
     public AudioClip SND_transparent_Sound;
+
+
+    // Scene Manager
+    string sceneName;
+
 
     // Movement
     void lateral()
@@ -73,7 +90,7 @@ public class SCRPT_Player_Movement : MonoBehaviour
         {
             moveInput = Input.GetAxis("Horizontal");
             rb.velocity = new Vector2(moveInput * movement_speed, rb.velocity.y);
-            Debug.Log("update");
+            
         }
 
         else
@@ -208,46 +225,31 @@ public class SCRPT_Player_Movement : MonoBehaviour
         /*
         // VFX
 
-        // LandVFX
-        if (Jumping == false)
-        {   if ( spawnParticle_Land == true)
-            {
-                source.clip = SND_landing_Sound;
-                source.Play();
-                camAnim.SetTrigger("shake");
-                Instantiate(Particle_LandEffect, Ground_Detector.position, Quaternion.identity);
-                spawnParticle_Land = false;
-            }
-        else
-            {
-                spawnParticle_Land = true;
-            }
-        }
 
         // TrailVFX
-        if ()
         */
-        if (Input.GetKeyDown(KeyCode.DownArrow))
-        {
-            source.clip = SND_transparent_Sound;
-            source.Play();
-        }
 
         // Transparent
-        if (Input.GetKey(KeyCode.DownArrow))
+
+        if (sceneName != "SCN_Level_One")
         {
-            Color col = sprite_renderer.color;
-            col.a = 0.333f;
-            sprite_renderer.color = col;
-            Intensity.intensity = 0.15f;
-            Ghost.isChasing = false;
-        }
-        else
-        {
-            Color col = sprite_renderer.color;
-            col.a = 1;
-            sprite_renderer.color = col;
-            Intensity.intensity = 1f;
+            if (Input.GetKey(KeyCode.DownArrow))
+            {
+                Color col = sprite_renderer.color;
+                col.a = 0.333f;
+                sprite_renderer.color = col;
+                Intensity.intensity = 0.15f;
+                Ghost.isChasing = false;
+                source.clip = SND_transparent_Sound;
+                source.Play();
+            }
+            else
+            {
+                Color col = sprite_renderer.color;
+                col.a = 1;
+                sprite_renderer.color = col;
+                Intensity.intensity = 1f;
+            }
         }
 
     }
@@ -262,6 +264,7 @@ public class SCRPT_Player_Movement : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D SolDetection1)
     {
+        ParticleController.fallParticle.Play();
         Jumping = false;
         Debug.Log("Coucou");
     }

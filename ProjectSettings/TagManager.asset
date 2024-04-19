@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Trans
   - Enemy
+  - Void
   layers:
   - Default
   - TransparentFX
