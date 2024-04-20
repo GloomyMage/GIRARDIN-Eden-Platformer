@@ -6,6 +6,7 @@ public class SCRPT_Checkpoint : MonoBehaviour
 {
 
     SCRPT_GameController gameController;
+    public SCRPT_AudioManager AudioManager;
     public Transform respawnPoint;
     [SerializeField] SpriteRenderer spriteRenderer;
     [SerializeField] Collider2D coll;
@@ -26,6 +27,7 @@ public class SCRPT_Checkpoint : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
+            AudioManager.PlaySFX(AudioManager.SFXCheckpoint);
             gameController.UpdateCheckpoint(respawnPoint.position);
             ColorChange();
             coll.enabled = false;

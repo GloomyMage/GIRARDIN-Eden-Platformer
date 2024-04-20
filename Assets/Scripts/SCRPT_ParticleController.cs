@@ -8,6 +8,7 @@ public class SCRPT_ParticleController : MonoBehaviour
     [SerializeField] ParticleSystem movementParticle;
 
     public SCRPT_Player_Movement GroundCheck;
+    public SCRPT_AudioManager AudioManager;
 
 
     // Movement Particle

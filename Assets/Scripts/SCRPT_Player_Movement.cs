@@ -10,34 +10,13 @@ using UnityEngine.SceneManagement;
 
 public class SCRPT_Player_Movement : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        source = GetComponent<AudioSource>();
-        rb = GetComponent<Rigidbody2D>();
-        anim = GetComponent<Animator>();
-
-        // Scene Manager
-        Scene currentScene = SceneManager.GetActiveScene();
-        sceneName = currentScene.name;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        movement();
-    }
-
-    private void FixedUpdate()
-    {
-        lateral();
-    }
 
     // Other Scripts
     [Header("----------===== Other Scripts =====----------")]
     public Light2D Intensity;
     public SCRPT_Chase Ghost;
     public SCRPT_ParticleController ParticleController;
+    public SCRPT_AudioManager AudioManager;
 
     // Attributes
     [Header ("----------=====  Attributes  =====----------")]
@@ -69,19 +48,37 @@ public class SCRPT_Player_Movement : MonoBehaviour
     public float jumpTimeCounter;
     [SerializeField] float jumpTime = 0.33f;
 
-    // Particles
-    [Header("----------===== Particles =====----------")]
-
-    // Audio
-    [Header("----------===== Audio =====----------")]
-    [SerializeField] AudioSource source;
-    public AudioClip SND_landing_Sound;
-    public AudioClip SND_transparent_Sound;
-
 
     // Scene Manager
     string sceneName;
 
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        rb = GetComponent<Rigidbody2D>();
+        anim = GetComponent<Animator>();
+
+        // Scene Manager
+        Scene currentScene = SceneManager.GetActiveScene();
+        sceneName = currentScene.name;
+    }
+
+    private void Awake()
+    {
+        AudioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<SCRPT_AudioManager>();
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        movement();
+    }
+
+    private void FixedUpdate()
+    {
+        lateral();
+    }
 
     // Movement
     void lateral()
@@ -164,6 +161,7 @@ public class SCRPT_Player_Movement : MonoBehaviour
 
         if (isGrounded == true && Input.GetKeyDown(KeyCode.Space))
         {
+            AudioManager.PlaySFX(AudioManager.SFXJump);
             Jumping = true;
             jumpTimeCounter = jumpTime;
             rb.velocity = (Vector2.up * JumpAmount);
@@ -235,13 +233,13 @@ public class SCRPT_Player_Movement : MonoBehaviour
         {
             if (Input.GetKey(KeyCode.DownArrow))
             {
+                AudioManager.PlaySFX(AudioManager.SFXTransparent);
                 Color col = sprite_renderer.color;
                 col.a = 0.333f;
                 sprite_renderer.color = col;
                 Intensity.intensity = 0.15f;
                 Ghost.isChasing = false;
-                source.clip = SND_transparent_Sound;
-                source.Play();
+                
             }
             else
             {
@@ -264,6 +262,7 @@ public class SCRPT_Player_Movement : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D SolDetection1)
     {
+        AudioManager.PlaySFX(AudioManager.SFXLanding);
         ParticleController.fallParticle.Play();
         Jumping = false;
         Debug.Log("Coucou");

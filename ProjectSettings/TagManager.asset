@@ -7,6 +7,7 @@ TagManager:
   - Trans
   - Enemy
   - Void
+  - Audio
   layers:
   - Default
   - TransparentFX
@@ -43,4 +44,22 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Background
+    uniqueID: 384894307
+    locked: 0
+  - name: Behind
+    uniqueID: 1282640849
+    locked: 0
+  - name: Particles
+    uniqueID: 3855562727
+    locked: 0
+  - name: Ground
+    uniqueID: 3078133915
+    locked: 0
+  - name: Obstacles
+    uniqueID: 3308155917
+    locked: 0
+  - name: Player
+    uniqueID: 88585103
     locked: 0

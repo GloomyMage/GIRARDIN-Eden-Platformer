@@ -11,6 +11,7 @@ public class SCRPT_GameController : MonoBehaviour
 
     SCRPT_Camera_Control cameraController;
     public SCRPT_ParticleController particleController;
+    public SCRPT_AudioManager AudioManager;
 
     public Light2D GIntensity;
     public Light2D LIntensity;
@@ -49,8 +50,9 @@ public class SCRPT_GameController : MonoBehaviour
 
     void Die()
     {
-       //  GIntensity.intensity = 0;
-       //  LIntensity.intensity = 0;
+        //  GIntensity.intensity = 0;
+        //  LIntensity.intensity = 0;
+        AudioManager.PlaySFX(AudioManager.SFXDeath);
         StartCoroutine(Respawn(0.5f));
     }
 
