@@ -7,7 +7,7 @@ public class SCRPT_Button_Manager : MonoBehaviour
 {
     public void ButtonPlay()
     {
-        SceneManager.LoadScene("SCN_Level_One");
+        SceneManager.LoadScene("SCN_Level_1");
     }
 
     public void ButtonOptions()

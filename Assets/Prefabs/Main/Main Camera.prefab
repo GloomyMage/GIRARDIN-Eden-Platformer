@@ -151,6 +151,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   smoothTime: 0
-  positionOffset: {x: 0, y: 0, z: -30}
+  positionOffset: {x: 0, y: 0, z: -10}
   xLimit: {x: -10, y: 10}
   yLimit: {x: -10, y: 10}
