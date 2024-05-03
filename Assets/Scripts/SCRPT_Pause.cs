@@ -13,12 +13,6 @@ public class SCRPT_Pause : MonoBehaviour
 
     void Update()
     {
-        Test();
-    }
-
-
-    public void Test()
-    {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             if (GameIsPaused)
@@ -37,28 +31,29 @@ public class SCRPT_Pause : MonoBehaviour
     public void Pause()
     {
         pauseMenu.SetActive(true);
-        Time.timeScale = 0;
+        Time.timeScale = 0f;
         GameIsPaused = true;
     }
 
     public void Resume()
     {
         pauseMenu.SetActive(false);
-        Time.timeScale = 1;
+        Time.timeScale = 1f;
         GameIsPaused = false;
     }
 
     public void Restart()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-        Time.timeScale = 1;
+        Time.timeScale = 1f;
         GameIsPaused = false;
     }
 
     public void Home()
     {
         SceneManager.LoadScene("SCN_main_Menu");
-        Time.timeScale = 1;
+        Time.timeScale = 1f;
+        GameIsPaused = false;
     }
 
 }

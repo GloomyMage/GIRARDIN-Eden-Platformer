@@ -1277,8 +1277,8 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 1, g: 1, b: 0, a: 1}
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 0}
+    m_HighlightedColor: {r: 0.22264141, g: 0.22264141, b: 0.22264141, a: 0.5294118}
     m_PressedColor: {r: 1, g: 0, b: 0, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
@@ -1332,7 +1332,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 0}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2213,7 +2213,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &553054398
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4281,8 +4281,9 @@ MonoBehaviour:
       m_Calls: []
   m_text: The Wanderer
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: aa6d8567c4863b24c90602dbd7db46ea, type: 2}
+  m_sharedMaterial: {fileID: 2361584130675508627, guid: aa6d8567c4863b24c90602dbd7db46ea,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -4928,8 +4929,9 @@ MonoBehaviour:
       m_Calls: []
   m_text: Start
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 33fc8f4edc2e8364bb369f263d3d8de8, type: 2}
+  m_sharedMaterial: {fileID: -3043477342443964467, guid: 33fc8f4edc2e8364bb369f263d3d8de8,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -4963,7 +4965,7 @@ MonoBehaviour:
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
-  m_characterSpacing: 0
+  m_characterSpacing: 5
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
@@ -5511,12 +5513,12 @@ PrefabInstance:
     - target: {fileID: 295124824220983785, guid: 5499fd653ed1c54418509ebd457c2c51,
         type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 0.00090009003
       objectReference: {fileID: 0}
     - target: {fileID: 295124824220983785, guid: 5499fd653ed1c54418509ebd457c2c51,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 905585237512447689, guid: 5499fd653ed1c54418509ebd457c2c51,
         type: 3}
@@ -5681,27 +5683,27 @@ PrefabInstance:
     - target: {fileID: 4299630302877158901, guid: 5499fd653ed1c54418509ebd457c2c51,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4436527821251744508, guid: 5499fd653ed1c54418509ebd457c2c51,
         type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 0.00090009003
       objectReference: {fileID: 0}
     - target: {fileID: 4436527821251744508, guid: 5499fd653ed1c54418509ebd457c2c51,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4436527821251744508, guid: 5499fd653ed1c54418509ebd457c2c51,
         type: 3}
       propertyPath: m_AnchorMin.x
-      value: 0
+      value: 0.00090009003
       objectReference: {fileID: 0}
     - target: {fileID: 4928612539963320231, guid: 5499fd653ed1c54418509ebd457c2c51,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5007855639359860949, guid: 5499fd653ed1c54418509ebd457c2c51,
         type: 3}
@@ -5726,12 +5728,12 @@ PrefabInstance:
     - target: {fileID: 5083723455105891493, guid: 5499fd653ed1c54418509ebd457c2c51,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5552975937473153653, guid: 5499fd653ed1c54418509ebd457c2c51,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6458635407568525450, guid: 5499fd653ed1c54418509ebd457c2c51,
         type: 3}

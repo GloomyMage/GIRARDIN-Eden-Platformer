@@ -1,56 +1,82 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 public class SCRPT_MovingPlatform : MonoBehaviour
 {
-    public SpriteRenderer sprite_renderer;
-    public Transform[] patrolPoints;
-    public int patrolDestination = 0;
-    [SerializeField] float movespeed = 3f;
+    [SerializeField] private float speed = 3f;
+    [SerializeField] private Transform startPosTransform;
+    [SerializeField] private Transform endPosTransform;
+
+    private Vector2 startPos;
+    private Vector2 endPos;
+    private Vector2 nextPos;
+
+    private Rigidbody2D player;
+    private Vector3 moveDelta;
+
+    void Start()
+    {
+        startPos = startPosTransform.localPosition;
+        endPos = endPosTransform.localPosition;
+        nextPos = endPos;
+    }
 
     void Update()
     {
-        platform();
+        SetMovement();
+        SetMoveDirection();
     }
 
-    private void platform()
+    //Move the player by the change in movement of the platform using the player's rigidbody instead of parenting
+    void LateUpdate()
     {
-        if (patrolDestination == 0)
+        if (player)
         {
-            transform.position = Vector2.MoveTowards(transform.position, patrolPoints[0].position, movespeed * Time.deltaTime);
-            if (Vector2.Distance(transform.position, patrolPoints[0].position) < 0.2f)
-            {
-                sprite_renderer.flipX = true;
-                patrolDestination = 1;
-            }
+            Vector2 playerBody = player.position;
+            player.transform.position = new Vector3(playerBody.x, playerBody.y) + moveDelta;
         }
+    }
 
-        if (patrolDestination == 1)
+    void SetMovement()
+    {
+        //Calculate desired position
+        Vector2 desiredPosition = Vector2.MoveTowards(transform.localPosition, nextPos, speed * Time.deltaTime);
+
+        //Use that position to figure out the change in position of the platform
+        moveDelta = new Vector3(desiredPosition.x, desiredPosition.y, 0f) - transform.position;
+
+        //Apply the new position
+        transform.localPosition = desiredPosition;
+    }
+
+    void SetMoveDirection()
+    {
+        if (Vector2.Distance(transform.localPosition, nextPos) <= 0.2f)
         {
-            transform.position = Vector2.MoveTowards(transform.position, patrolPoints[1].position, movespeed * Time.deltaTime);
-            if (Vector2.Distance(transform.position, patrolPoints[1].position) < 0.2f)
+            if (nextPos == endPos)
             {
-                sprite_renderer.flipX = false;
-                patrolDestination = 0;
+                nextPos = startPos;
+            }
+            else
+            {
+                nextPos = endPos;
             }
         }
     }
-        private void OnTriggerEnter2D(Collider2D collision)
-        {
-            if (collision.CompareTag("Player"))
-            {
-                collision.transform.parent = this.transform;
-            }
-        }
 
-        private void OnTriggerExit2D(Collider2D collision)
-        {
-            if (collision.CompareTag("Player"))
-            {
-                collision.transform.parent = null;
-            }
-        }
- 
+    void OnCollisionEnter2D(Collision2D other)
+    {
+        //Instead of parenting, grab a reference to the player's rigidbody
+        if (other.gameObject.CompareTag("Player"))
+            player = other.gameObject.GetComponent<Rigidbody2D>();
+    }
 
+    void OnCollisionExit2D(Collision2D other)
+    {
+        //Remove reference
+        if (other.gameObject.CompareTag("Player"))
+            player = null;
+    }
 }
