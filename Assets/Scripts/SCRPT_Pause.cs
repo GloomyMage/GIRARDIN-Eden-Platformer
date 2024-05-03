@@ -2,35 +2,57 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+
+
 public class SCRPT_Pause : MonoBehaviour
 {
-    [SerializeField] GameObject pauseMenu;
+    public GameObject pauseMenu;
 
-    private void FixedUpdate()
+    public static bool GameIsPaused;
+
+    void Update()
     {
-        if (Input.GetKeyDown(KeyCode.P))
+        Test();
+    }
+
+
+    public void Test()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
-            Pause();
+            if (GameIsPaused)
+            {
+                Resume();
+            }
+
+            else
+            {
+                Pause();
+            }
+
         }
-       
     }
 
     public void Pause()
     {
         pauseMenu.SetActive(true);
         Time.timeScale = 0;
+        GameIsPaused = true;
     }
 
     public void Resume()
     {
         pauseMenu.SetActive(false);
         Time.timeScale = 1;
+        GameIsPaused = false;
     }
 
     public void Restart()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         Time.timeScale = 1;
+        GameIsPaused = false;
     }
 
     public void Home()

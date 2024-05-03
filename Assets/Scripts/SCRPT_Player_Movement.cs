@@ -73,11 +73,12 @@ public class SCRPT_Player_Movement : MonoBehaviour
     void Update()
     {
         movement();
+        lateral();
     }
 
     private void FixedUpdate()
     {
-        lateral();
+       
     }
 
     // Movement
@@ -229,7 +230,7 @@ public class SCRPT_Player_Movement : MonoBehaviour
 
         // Transparent
 
-        if (sceneName != "SCN_Level_One")
+        if (sceneName != "SCN_Level_1")
         {
             if (Input.GetKey(KeyCode.DownArrow))
             {
