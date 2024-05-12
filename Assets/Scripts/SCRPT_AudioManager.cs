@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.UIElements;
 using UnityEngine.SceneManagement;
@@ -27,149 +28,117 @@ public class SCRPT_AudioManager : MonoBehaviour
     public AudioClip SFXRain;
     public AudioClip SFXEnemy;
 
-    // Scene Manager
-    string sceneName;
-
     public static SCRPT_AudioManager instance;
+
+
+    //private void Awake()
+    //{
+
+    //    if (instance == null)
+    //    {
+
+    //        instance = this;
+    //        DontDestroyOnLoad(gameObject);
+
+    //    }
+    //    else
+    //    {
+    //        Destroy(gameObject);
+    //    }
+
+    //}
 
 
     private void Start()
     {
         Scene currentScene = SceneManager.GetActiveScene();
-        sceneName = currentScene.name;
+        string sceneName = currentScene.name;
 
-        if (sceneName == "SCN_Level_One")
-        {
-            musicSource.clip = MusicLVL1;
-            musicSource.Play();
-        }
-        else if (sceneName == "SCN_Level_Two")
-        {
-            musicSource.clip = MusicLVL2;
-            musicSource.Play();
-        }
-        else if (sceneName == "SCN_Level_Three")
-        {
-            musicSource.clip = MusicLVL3;
-            musicSource.Play();
-        }
-        else if (sceneName == "SCN_Level_Four")
-        {
-            musicSource.clip = MusicLVL4;
-            musicSource.Play();
-        }
-        else if (sceneName == "SCN_Level_Five")
-        {
-            musicSource.clip = MusicLVL5;
-            musicSource.Play();
-        }
-        else if (sceneName == "SCN_Main_Menu")
+        if (sceneName == "SCN_Main_Menu")
         {
             musicSource.clip = MusicMenu;
             musicSource.Play();
         }
+        else if (sceneName == "SCN_Level_1")
+        {
+            musicSource.clip = MusicLVL1;
+            musicSource.Play();
+        }
+        else if (sceneName == "SCN_Level_2")
+        {
+            musicSource.clip = MusicLVL2;
+            musicSource.Play();
+        }
+        else if (sceneName == "SCN_Level_3")
+        {
+            musicSource.clip = MusicLVL3;
+            musicSource.Play();
+        }
+        else if (sceneName == "SCN_Level_4")
+        {
+            musicSource.clip = MusicLVL4;
+            musicSource.Play();
+        }
+        else if (sceneName == "SCN_Level_5")
+        {
+            musicSource.clip = MusicLVL5;
+            musicSource.Play();
+        }
     }
 
-    //private void Awake()
+    //static public void PlayMusic()
     //{
     //    Scene currentScene = SceneManager.GetActiveScene();
-    //    sceneName = currentScene.name;
+    //    string sceneName = currentScene.name;
 
-
-    //    if (instance == null)
+    //    if (instance != null)
     //    {
-
-    //       if (sceneName == "SCN_Level_One")
+    //        if (instance.musicSource != null)
     //        {
-    //            SCRPT_AudioManager.instance.GetComponent<AudioSource>().Pause();
-    //           musicSource.clip = MusicLVL1;
-    //           musicSource.Play();
-    //      }
-    //       else if (sceneName == "SCN_Level_Two")
-    //        {
-    //            SCRPT_AudioManager.instance.GetComponent<AudioSource>().Pause();
-    //           musicSource.clip = MusicLVL2;
-    //            musicSource.Play();
+    //            instance.musicSource.Stop();
+    //            if (sceneName == "SCN_Main_Menu")
+    //            {
+    //                instance.musicSource.clip = instance.MusicMenu;
+    //                instance.musicSource.Play();
+    //            }
+    //            else if (sceneName == "SCN_Level_1")
+    //            {
+    //                instance.musicSource.clip = instance.MusicLVL1;
+    //                instance.musicSource.Play();
+    //            }
+    //            else if (sceneName == "SCN_Level_2")
+    //            {
+    //                instance.musicSource.clip = instance.MusicLVL2;
+    //                instance.musicSource.Play();
+    //            }
+    //            else if (sceneName == "SCN_Level_3")
+    //            {
+    //                instance.musicSource.clip = instance.MusicLVL3;
+    //                instance.musicSource.Play();
+    //            }
+    //            else if (sceneName == "SCN_Level_4")
+    //            {
+    //                instance.musicSource.clip = instance.MusicLVL4;
+    //                instance.musicSource.Play();
+    //            }
+    //            else if (sceneName == "SCN_Level_5")
+    //            {
+    //                instance.musicSource.clip = instance.MusicLVL5;
+    //                instance.musicSource.Play();
+    //            }
     //        }
-    //        else if (sceneName == "SCN_Level_Three")
-    //        {
-    //            SCRPT_AudioManager.instance.GetComponent<AudioSource>().Pause();
-    //          musicSource.clip = MusicLVL3;
-    //           musicSource.Play();
-    //       }
-    //       else if (sceneName == "SCN_Level_Four")
-    //       {
-    //           SCRPT_AudioManager.instance.GetComponent<AudioSource>().Pause();
-    //          musicSource.clip = MusicLVL4;
-    //           musicSource.Play();
-    //        }
-    //        else if (sceneName == "SCN_Level_Five")
-    //       {
-    //          SCRPT_AudioManager.instance.GetComponent<AudioSource>().Pause();
-    //           musicSource.clip = MusicLVL5;
-    //            musicSource.Play();
-    //       }
-    //        else if (sceneName == "SCN_Main_Menu")
-    //       {
-    //            SCRPT_AudioManager.instance.GetComponent<AudioSource>().Pause();
-    //           musicSource.clip = MusicMenu;
-    //          musicSource.Play();
-    //       }
-
-    //       instance = this;
-    //      DontDestroyOnLoad(gameObject);
-    //   }
-    //   else
-    //    {
-    //       Destroy(gameObject);
     //    }
-
+    //    else
+    //    {
+    //        Debug.LogError("Unavailable MusicPlayer component");
+    //    }
     //}
 
-    //private void Update()
-    //{
-    //    Scene currentScene = SceneManager.GetActiveScene();
-    //    sceneName = currentScene.name;
 
-
-    //   if (sceneName == "SCN_Level_One")
-    //    {
-    //       SCRPT_AudioManager.instance.GetComponent<AudioSource>().Pause();
-    //      musicSource.clip = MusicLVL1;
-    //       musicSource.Play();
-    //  }
-    //   else if (sceneName == "SCN_Level_Two")
-    //   {
-    //       SCRPT_AudioManager.instance.GetComponent<AudioSource>().Pause();
-    //       musicSource.clip = MusicLVL2;
-    //       musicSource.Play();
-    //   }
-    //   else if (sceneName == "SCN_Level_Three")
-    //   {
-    //       SCRPT_AudioManager.instance.GetComponent<AudioSource>().Pause();
-    //       musicSource.clip = MusicLVL3;
-    //        musicSource.Play();
-    //   }
-    //   else if (sceneName == "SCN_Level_Four")
-    //   {
-    //      SCRPT_AudioManager.instance.GetComponent<AudioSource>().Pause();
-    //      musicSource.clip = MusicLVL4;
-    //       musicSource.Play();
-    //   }
-    //    else if (sceneName == "SCN_Level_Five")
-    //    {
-    //       SCRPT_AudioManager.instance.GetComponent<AudioSource>().Pause();
-    //      musicSource.clip = MusicLVL5;
-    //        musicSource.Play();
-    //    }
-    //    else if (sceneName == "SCN_Main_Menu")
-    //    {
-    //       SCRPT_AudioManager.instance.GetComponent<AudioSource>().Pause();
-    //      musicSource.clip = MusicMenu;
-    //       musicSource.Play();
-    //    }
-
-    //}
+    public void PlayMusic(AudioClip clip)
+    {
+        SFXSource.PlayOneShot(clip);
+    }
 
     public void PlaySFX(AudioClip clip)
     {

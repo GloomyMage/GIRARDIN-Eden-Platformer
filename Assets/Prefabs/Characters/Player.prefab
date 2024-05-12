@@ -14894,7 +14894,7 @@ GameObject:
   - component: {fileID: 3686366372815931390}
   - component: {fileID: 2946386399626475564}
   - component: {fileID: 1715092425453523465}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -14987,7 +14987,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 2
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 182ea9327f08aed4fb2137df5706cb49, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -15018,6 +15018,7 @@ MonoBehaviour:
   sprite_renderer: {fileID: 8517353842554695935}
   rb: {fileID: 101090626353514449}
   anim: {fileID: 0}
+  capsule_collider: {fileID: 0}
   KBForce: 6
   KBCounter: 0
   KBTotalTime: 0.2

@@ -24,6 +24,7 @@ public class SCRPT_Player_Movement : MonoBehaviour
     [SerializeField] SpriteRenderer sprite_renderer;
     [SerializeField] Rigidbody2D rb;
     [SerializeField] Animator anim;
+    [SerializeField] CapsuleCollider2D capsule_collider;
 
     // Knockback
     [Header("----------===== Knockback =====----------")]
@@ -34,12 +35,12 @@ public class SCRPT_Player_Movement : MonoBehaviour
 
     // Set speed movement speed
     [Header("----------===== Speed =====----------")]
-    [SerializeField] float movement_speed = 1f;
+    [SerializeField] float movement_speed = 6f;
     private float moveInput;
 
     // Jump
     [Header("----------===== Jump =====----------")]
-    [SerializeField] float JumpAmount = 5;
+    [SerializeField] float JumpAmount = 10f;
     [SerializeField] bool Jumping = false;
     public bool isGrounded;
     public Transform Ground_Detector;
@@ -84,24 +85,24 @@ public class SCRPT_Player_Movement : MonoBehaviour
     // Movement
     void lateral()
     {
-        if (KBCounter <= 0)
-        {
+       if (KBCounter <= 0)
+      {
             moveInput = Input.GetAxis("Horizontal");
             rb.velocity = new Vector2(moveInput * movement_speed, rb.velocity.y);
             
-        }
+   }
 
-        else
-        {
-            if (KnockFromRight == true)
-            {
-                rb.velocity = new Vector2(-KBForce, KBForce);
-            }
-            else if (KnockFromRight == false)
-            {
-                rb.velocity = new Vector2(KBForce, KBForce);
-            }
+       else
+    {
+          if (KnockFromRight == true)
+       {
+              rb.velocity = new Vector2(-KBForce, KBForce);
         }
+         else if (KnockFromRight == false)
+         {
+            rb.velocity = new Vector2(KBForce, KBForce);
+         }
+      }
 
         KBCounter -= Time.deltaTime;
     }
@@ -240,7 +241,10 @@ public class SCRPT_Player_Movement : MonoBehaviour
                 sprite_renderer.color = col;
                 Intensity.intensity = 0.15f;
                 Ghost.isChasing = false;
-                
+                Physics2D.IgnoreLayerCollision(6, 7, true);
+                movement_speed = 0f;
+                JumpAmount = 0f;
+
             }
             else
             {
@@ -248,6 +252,9 @@ public class SCRPT_Player_Movement : MonoBehaviour
                 col.a = 1;
                 sprite_renderer.color = col;
                 Intensity.intensity = 1f;
+                Physics2D.IgnoreLayerCollision(6, 7, false);
+                movement_speed = 6f;
+                JumpAmount = 10f;
             }
         }
 
