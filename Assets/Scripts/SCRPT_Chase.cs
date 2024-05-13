@@ -43,7 +43,7 @@ public class SCRPT_Chase : MonoBehaviour
             if (patrolDestination == 0)
             {
                 transform.position = Vector2.MoveTowards(transform.position, patrolPoints[0].position, movespeed * Time.deltaTime);
-                if (Vector2.Distance(transform.position, patrolPoints[0].position) < 0.2f)
+                if (Vector2.Distance(transform.position, patrolPoints[0].position) < 0.5f)
                 {
                     sprite_renderer.flipX = true;
                     patrolDestination = 1;
@@ -53,7 +53,7 @@ public class SCRPT_Chase : MonoBehaviour
             if (patrolDestination == 1)
             {
                 transform.position = Vector2.MoveTowards(transform.position, patrolPoints[1].position, movespeed * Time.deltaTime);
-                if (Vector2.Distance(transform.position, patrolPoints[1].position) < 0.2f)
+                if (Vector2.Distance(transform.position, patrolPoints[1].position) < 0.5f)
                 {
                     sprite_renderer.flipX = false;
                     patrolDestination = 0;

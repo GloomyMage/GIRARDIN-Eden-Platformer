@@ -41,13 +41,18 @@ public class SCRPT_Player_Movement : MonoBehaviour
     // Jump
     [Header("----------===== Jump =====----------")]
     [SerializeField] float JumpAmount = 10f;
+
     [SerializeField] bool Jumping = false;
     public bool isGrounded;
     public Transform Ground_Detector;
     public float checkRadius;
     public LayerMask whatIsGround;
+
     public float jumpTimeCounter;
     [SerializeField] float jumpTime = 0.33f;
+
+    public float fallMultiplier = 2.5f;
+    public float lowJumpMultiplier = 2f;
 
 
     // Scene Manager
@@ -161,6 +166,7 @@ public class SCRPT_Player_Movement : MonoBehaviour
 
         isGrounded = Physics2D.OverlapCircle(Ground_Detector.position, checkRadius, whatIsGround);
 
+
         if (isGrounded == true && Input.GetKeyDown(KeyCode.Space))
         {
             AudioManager.PlaySFX(AudioManager.SFXJump);
@@ -231,7 +237,7 @@ public class SCRPT_Player_Movement : MonoBehaviour
 
         // Transparent
 
-        if (sceneName != "SCN_Level_1")
+        if (sceneName != "SCN_Level_1" || sceneName != "SCN_Level_6")
         {
             if (Input.GetKey(KeyCode.DownArrow))
             {
