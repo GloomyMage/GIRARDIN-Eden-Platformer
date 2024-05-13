@@ -166,6 +166,15 @@ public class SCRPT_Player_Movement : MonoBehaviour
 
         isGrounded = Physics2D.OverlapCircle(Ground_Detector.position, checkRadius, whatIsGround);
 
+        if (rb.velocity.y < 0)
+        {
+            rb.velocity += Vector2.up * Physics2D.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
+        }
+        else if (rb.velocity.y > 0 && !Input.GetKey(KeyCode.Space)) 
+        {
+            rb.velocity += Vector2.up * Physics2D.gravity.y * (lowJumpMultiplier - 1) * Time.deltaTime;
+        }
+
 
         if (isGrounded == true && Input.GetKeyDown(KeyCode.Space))
         {
@@ -237,7 +246,7 @@ public class SCRPT_Player_Movement : MonoBehaviour
 
         // Transparent
 
-        if (sceneName != "SCN_Level_1" || sceneName != "SCN_Level_6")
+        if (sceneName != "SCN_Level_1")
         {
             if (Input.GetKey(KeyCode.DownArrow))
             {

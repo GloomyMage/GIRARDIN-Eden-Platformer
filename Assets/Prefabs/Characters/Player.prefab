@@ -14986,7 +14986,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 1.75
   m_Material: {fileID: 6200000, guid: 182ea9327f08aed4fb2137df5706cb49, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
@@ -15024,7 +15024,7 @@ MonoBehaviour:
   KBTotalTime: 0.2
   KnockFromRight: 0
   movement_speed: 6
-  JumpAmount: 15
+  JumpAmount: 10
   Jumping: 1
   isGrounded: 0
   Ground_Detector: {fileID: 5380093175170462714}
