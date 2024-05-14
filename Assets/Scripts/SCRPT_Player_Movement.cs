@@ -17,6 +17,14 @@ public class SCRPT_Player_Movement : MonoBehaviour
     public SCRPT_Chase Ghost;
     public SCRPT_ParticleController ParticleController;
     public SCRPT_AudioManager AudioManager;
+    public NewControls controls;
+
+    // Inputs
+    [Header("----------=====  Inputs  =====----------")]
+    private InputAction _movementAction;
+    private InputAction _movementJump;
+    private InputAction _movementInvisible;
+    private InputAction _movementDoor;
 
     // Attributes
     [Header ("----------=====  Attributes  =====----------")]
@@ -73,19 +81,188 @@ public class SCRPT_Player_Movement : MonoBehaviour
     private void Awake()
     {
         AudioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<SCRPT_AudioManager>();
+        controls = new NewControls();
     }
 
     // Update is called once per frame
     void Update()
     {
-        movement();
+        
         lateral();
     }
 
     private void FixedUpdate()
     {
-       
+        isGrounded = Physics2D.OverlapCircle(Ground_Detector.position, checkRadius, whatIsGround);
+
+        if (rb.velocity.y < 0)
+        {
+            rb.velocity += Vector2.up * Physics2D.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
+        }
+        else if (rb.velocity.y > 0 && !Input.GetKey(KeyCode.Space))
+        {
+            rb.velocity += Vector2.up * Physics2D.gravity.y * (lowJumpMultiplier - 1) * Time.deltaTime;
+        }
+
+
+        if (KBCounter <= 0)
+        {
+            moveInput = Input.GetAxis("Horizontal");
+            rb.velocity = new Vector2(moveInput * movement_speed, rb.velocity.y);
+
+        }
+
+        else
+        {
+            if (KnockFromRight == true)
+            {
+                rb.velocity = new Vector2(-KBForce, KBForce);
+            }
+            else if (KnockFromRight == false)
+            {
+                rb.velocity = new Vector2(KBForce, KBForce);
+            }
+        }
+
+        KBCounter -= Time.deltaTime;
+
+        if (moveInput > 0)
+        {
+            transform.eulerAngles = new Vector3(0, 0, 0);
+        }
+        else if (moveInput < 0)
+        {
+            transform.eulerAngles = new Vector3(0, 180, 0);
+        }
+
+        Vector2 moveDir = _movementAction.ReadValue<Vector2>();
     }
+
+    private void OnEnable()
+    {
+        _movementAction = controls.Player.Movement;
+        _movementAction.Enable();
+
+        _movementJump = controls.Player.Jump;
+        _movementJump.Enable();
+
+        _movementInvisible = controls.Player.Invisible;
+        _movementInvisible.Enable();
+
+        _movementDoor = controls.Player.Door;
+        _movementDoor.Enable();
+
+        _movementJump.started += Jump;
+        _movementJump.performed += HoldJump;
+        _movementJump.canceled += OffJump;
+
+        _movementInvisible.performed += Invisible;
+        _movementInvisible.canceled += Visible;
+
+        _movementDoor.started += Door;
+        
+    }
+
+    private void OnDisable()
+    {
+        controls.Player.Movement.Disable();
+
+        _movementJump.performed -= Jump;
+        _movementJump.performed -= HoldJump;
+        _movementJump.performed -= OffJump;
+        _movementJump.Disable();
+
+        _movementInvisible.performed -= Invisible;
+        _movementInvisible.canceled -= Visible;
+        _movementInvisible.Disable();
+
+        _movementDoor.started -= Door;
+        _movementDoor.Disable();
+    }
+
+    private void Jump(InputAction.CallbackContext context)
+    {
+
+        if (isGrounded == true)
+        {
+            AudioManager.PlaySFX(AudioManager.SFXJump);
+            Jumping = true;
+            jumpTimeCounter = jumpTime;
+            rb.velocity = (Vector2.up * JumpAmount);
+        }
+
+        if (Input.GetKey(KeyCode.Space) && Jumping == true)
+        {
+            if (jumpTimeCounter > 0)
+            {
+                rb.velocity = (Vector2.up * JumpAmount);
+                jumpTimeCounter -= Time.deltaTime;
+            }
+            else
+            {
+                Jumping = false;
+            }
+
+
+        }
+
+    }
+
+    private void HoldJump(InputAction.CallbackContext context) {
+
+        if (Jumping == true)
+        {
+            if (jumpTimeCounter > 0)
+            {
+                rb.velocity = (Vector2.up * JumpAmount);
+                jumpTimeCounter -= Time.deltaTime;
+            }
+            else
+            {
+                Jumping = false;
+            }
+
+
+        }
+    }
+
+    private void OffJump(InputAction.CallbackContext context)
+    {
+            Jumping = false;
+    }
+
+    private void Invisible(InputAction.CallbackContext context)
+    {
+        if (sceneName != "SCN_Level_1")
+        {
+            AudioManager.PlaySFX(AudioManager.SFXTransparent);
+            Color col = sprite_renderer.color;
+            col.a = 0.333f;
+            sprite_renderer.color = col;
+            Intensity.intensity = 0.15f;
+            Ghost.isChasing = false;
+            Physics2D.IgnoreLayerCollision(6, 7, true);
+            movement_speed = 0f;
+            JumpAmount = 0f;
+        }
+    }
+
+    private void Visible(InputAction.CallbackContext context)
+    {
+        Color col = sprite_renderer.color;
+        col.a = 1;
+        sprite_renderer.color = col;
+        Intensity.intensity = 1f;
+        Physics2D.IgnoreLayerCollision(6, 7, false);
+        movement_speed = 6f;
+        JumpAmount = 10f;
+    }
+
+    private void Door(InputAction.CallbackContext context)
+    {
+
+    }
+
 
     // Movement
     void lateral()
@@ -113,8 +290,7 @@ public class SCRPT_Player_Movement : MonoBehaviour
     }
 
 
-    void movement()
-    {
+    
         /*
         // Go left
         if (Input.GetKey(KeyCode.LeftArrow)) // While the left arrow is pressed
@@ -152,63 +328,15 @@ public class SCRPT_Player_Movement : MonoBehaviour
         }
         */
 
-        if (moveInput > 0)
-        {
-            transform.eulerAngles = new Vector3(0, 0, 0);
-        }
-        else if (moveInput < 0)
-        {
-            transform.eulerAngles = new Vector3(0, 180, 0);
-        }
+      
 
 
         // Jump
 
-        isGrounded = Physics2D.OverlapCircle(Ground_Detector.position, checkRadius, whatIsGround);
-
-        if (rb.velocity.y < 0)
-        {
-            rb.velocity += Vector2.up * Physics2D.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
-        }
-        else if (rb.velocity.y > 0 && !Input.GetKey(KeyCode.Space)) 
-        {
-            rb.velocity += Vector2.up * Physics2D.gravity.y * (lowJumpMultiplier - 1) * Time.deltaTime;
-        }
+       
 
 
-        if (isGrounded == true && Input.GetKeyDown(KeyCode.Space))
-        {
-            AudioManager.PlaySFX(AudioManager.SFXJump);
-            Jumping = true;
-            jumpTimeCounter = jumpTime;
-            rb.velocity = (Vector2.up * JumpAmount);
-        }
-
-        if (Input.GetKey(KeyCode.Space) && Jumping == true)
-        {
-            if (jumpTimeCounter > 0)
-            {
-                rb.velocity = (Vector2.up * JumpAmount);
-                jumpTimeCounter -= Time.deltaTime;
-            }
-            else
-            {
-                Jumping = false;
-            }
-
-           
-        }
-
-        if (Input.GetKeyUp(KeyCode.Space))
-        {
-            Jumping = false;
-        }
-
-        if (Input.GetKeyUp(KeyCode.Space))
-        {
-            Jumping = false;
-        }
-
+        
 
 
         /*
@@ -244,36 +372,7 @@ public class SCRPT_Player_Movement : MonoBehaviour
         // TrailVFX
         */
 
-        // Transparent
 
-        if (sceneName != "SCN_Level_1")
-        {
-            if (Input.GetKey(KeyCode.DownArrow))
-            {
-                AudioManager.PlaySFX(AudioManager.SFXTransparent);
-                Color col = sprite_renderer.color;
-                col.a = 0.333f;
-                sprite_renderer.color = col;
-                Intensity.intensity = 0.15f;
-                Ghost.isChasing = false;
-                Physics2D.IgnoreLayerCollision(6, 7, true);
-                movement_speed = 0f;
-                JumpAmount = 0f;
-
-            }
-            else
-            {
-                Color col = sprite_renderer.color;
-                col.a = 1;
-                sprite_renderer.color = col;
-                Intensity.intensity = 1f;
-                Physics2D.IgnoreLayerCollision(6, 7, false);
-                movement_speed = 6f;
-                JumpAmount = 10f;
-            }
-        }
-
-    }
 
     //public void Jump(InputAction.CallbackContext context)
     //{
