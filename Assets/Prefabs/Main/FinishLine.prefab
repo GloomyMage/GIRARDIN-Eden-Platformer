@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5282753646382728295}
   - component: {fileID: 3901599052376817830}
   - component: {fileID: 7895342091292556261}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: FinishLine
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -118,7 +118,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1282640849
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 50cecc124862b684c95badaa2b5b68d1, type: 3}
   m_Color: {r: 0.06319618, g: 0, b: 1, a: 1}
@@ -143,3 +143,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e284c55c8cdab14f9cb9f0f341609f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  goNextLevel: 0
+  levelName: 

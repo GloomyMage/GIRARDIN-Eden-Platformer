@@ -83,6 +83,8 @@ public class SCRPT_Player_Movement : MonoBehaviour
     {
         AudioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<SCRPT_AudioManager>();
         controls = new NewControls();
+        Physics2D.IgnoreLayerCollision(7, 9, true);
+        Physics2D.IgnoreLayerCollision(9, 10, true);
     }
 
     // Update is called once per frame

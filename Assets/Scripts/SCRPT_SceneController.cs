@@ -28,14 +28,16 @@ public class SCRPT_SceneController : MonoBehaviour
 
     public void LoadScene(string SceneName)
     {
-
+        SceneManager.LoadSceneAsync(SceneName);
     }    
 
     IEnumerator LoadLevel()
     {
         transitionAnim.SetTrigger("End");
+       
         yield return new WaitForSeconds(1);
         SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex + 1);
+      
         transitionAnim.SetTrigger("Start");
     }
 }

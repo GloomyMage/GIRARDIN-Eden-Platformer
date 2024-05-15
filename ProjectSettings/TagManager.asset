@@ -19,8 +19,8 @@ TagManager:
   - Player
   - Enemy
   - Ground
-  - 
-  - 
+  - Particles
+  - Other
   - 
   - 
   - 
@@ -49,17 +49,20 @@ TagManager:
   - name: Background
     uniqueID: 384894307
     locked: 0
+  - name: Effects
+    uniqueID: 449975021
+    locked: 0
   - name: Behind
     uniqueID: 1282640849
-    locked: 0
-  - name: Particles
-    uniqueID: 3855562727
     locked: 0
   - name: Ground
     uniqueID: 3078133915
     locked: 0
   - name: Obstacles
     uniqueID: 3308155917
+    locked: 0
+  - name: Particles
+    uniqueID: 3855562727
     locked: 0
   - name: Player
     uniqueID: 88585103
