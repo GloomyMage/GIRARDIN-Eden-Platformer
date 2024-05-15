@@ -12,6 +12,7 @@ public class SCRPT_GameController : MonoBehaviour
     SCRPT_Camera_Control cameraController;
     public SCRPT_ParticleController particleController;
     public SCRPT_AudioManager AudioManager;
+    public SCRPT_Player_Movement player;
 
     public Light2D GIntensity;
     public Light2D LIntensity;
@@ -41,6 +42,8 @@ public class SCRPT_GameController : MonoBehaviour
             {
             Die();
         }
+
+        
     }
 
     public void UpdateCheckpoint(Vector2 pos)
@@ -48,10 +51,11 @@ public class SCRPT_GameController : MonoBehaviour
         CheckPointPos = pos;
     }
 
-    void Die()
+    public void Die()
     {
         //  GIntensity.intensity = 0;
         //  LIntensity.intensity = 0;
+        player.phantom = true;
         AudioManager.PlaySFX(AudioManager.SFXDeath);
         StartCoroutine(Respawn(0.5f));
     }
@@ -67,5 +71,6 @@ public class SCRPT_GameController : MonoBehaviour
         transform.position = CheckPointPos;
         transform.localScale = new Vector3(1, 1, 1);
         playerRb.simulated = true;
+        player.phantom = false;
     }
 }

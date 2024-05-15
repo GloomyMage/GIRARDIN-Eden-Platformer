@@ -4990,6 +4990,26 @@ PrefabInstance:
       propertyPath: m_SpriteTilingProperty.oldSize.y
       value: 5.12
       objectReference: {fileID: 0}
+    - target: {fileID: 2919982485378675959, guid: 0173d8872924e9a40bb7cac5afe866fd,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 3.9052386
+      objectReference: {fileID: 0}
+    - target: {fileID: 2919982485378675959, guid: 0173d8872924e9a40bb7cac5afe866fd,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 4.7413807
+      objectReference: {fileID: 0}
+    - target: {fileID: 2919982485378675959, guid: 0173d8872924e9a40bb7cac5afe866fd,
+        type: 3}
+      propertyPath: m_Offset.x
+      value: 0.0070858
+      objectReference: {fileID: 0}
+    - target: {fileID: 2919982485378675959, guid: 0173d8872924e9a40bb7cac5afe866fd,
+        type: 3}
+      propertyPath: m_Offset.y
+      value: -0.12754679
+      objectReference: {fileID: 0}
     - target: {fileID: 5592605478865641890, guid: 0173d8872924e9a40bb7cac5afe866fd,
         type: 3}
       propertyPath: m_FlipX
@@ -5126,9 +5146,9 @@ SpriteRenderer:
   m_SortingLayerID: 195607303
   m_SortingLayer: 7
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: bfa29e36324a5004d9ee8466332e2296, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5c72d4334a493c54ebd52b23d37f1919, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
+  m_FlipX: 1
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 5.12, y: 5.12}

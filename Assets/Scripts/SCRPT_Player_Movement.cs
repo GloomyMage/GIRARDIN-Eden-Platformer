@@ -33,6 +33,7 @@ public class SCRPT_Player_Movement : MonoBehaviour
     [SerializeField] Rigidbody2D rb;
     [SerializeField] Animator anim;
     [SerializeField] CapsuleCollider2D capsule_collider;
+    public bool phantom = false;
 
     // Knockback
     [Header("----------===== Knockback =====----------")]
@@ -244,6 +245,7 @@ public class SCRPT_Player_Movement : MonoBehaviour
             Physics2D.IgnoreLayerCollision(6, 7, true);
             movement_speed = 0f;
             JumpAmount = 0f;
+            phantom = true;
         }
     }
 
@@ -256,7 +258,9 @@ public class SCRPT_Player_Movement : MonoBehaviour
         Physics2D.IgnoreLayerCollision(6, 7, false);
         movement_speed = 6f;
         JumpAmount = 10f;
-    }
+        phantom = false;
+
+}
 
     private void Door(InputAction.CallbackContext context)
     {
