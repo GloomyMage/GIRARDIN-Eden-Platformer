@@ -10,6 +10,8 @@ public class SCRPT_Chase : MonoBehaviour
     public Transform[] patrolPoints;
     public int patrolDestination = 0;
     public float movespeed;
+    public float walkspeed = 4f;
+    public float chasespeed = 8f;
     public Transform playerTransform;
     public bool isChasing = false;
     public float chaseDistance = 3f;
@@ -30,14 +32,14 @@ public class SCRPT_Chase : MonoBehaviour
             }
             else if (transform.position.x > playerTransform.position.x)
             {
-                movespeed = 8f;
+                movespeed = chasespeed;
                 sprite_renderer.flipX = false;
                 transform.position += Vector3.left * movespeed * Time.deltaTime;
             }
 
             else if (transform.position.x < playerTransform.position.x)
             {
-                movespeed = 8f;
+                movespeed = chasespeed;
                 sprite_renderer.flipX = true;
                 transform.position += Vector3.right * movespeed * Time.deltaTime;
             }
@@ -53,7 +55,7 @@ public class SCRPT_Chase : MonoBehaviour
                 else if (patrolDestination == 0)
                 {
                     sprite_renderer.flipX = true;
-                    movespeed = 3f;
+                    movespeed = walkspeed;
 
                     transform.position = Vector2.MoveTowards(transform.position, patrolPoints[0].position, movespeed * Time.deltaTime);
                     if (Vector2.Distance(transform.position, patrolPoints[0].position) < 2f)
@@ -66,7 +68,7 @@ public class SCRPT_Chase : MonoBehaviour
                 else if (patrolDestination == 1)
                 {
                     sprite_renderer.flipX = false;
-                    movespeed = 3f;
+                    movespeed = walkspeed;
 
                     transform.position = Vector2.MoveTowards(transform.position, patrolPoints[1].position, movespeed * Time.deltaTime);
                     if (Vector2.Distance(transform.position, patrolPoints[1].position) < 2f)

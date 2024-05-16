@@ -155,7 +155,7 @@ public class SCRPT_Player_Movement : MonoBehaviour
         _movementDoor = controls.Player.Door;
         _movementDoor.Enable();
 
-        _movementJump.started += Jump;
+       // _movementJump.started += Jump;
         _movementJump.performed += HoldJump;
         _movementJump.canceled += OffJump;
 
@@ -170,9 +170,9 @@ public class SCRPT_Player_Movement : MonoBehaviour
     {
         controls.Player.Movement.Disable();
 
-        _movementJump.performed -= Jump;
+       // _movementJump.started -= Jump;
         _movementJump.performed -= HoldJump;
-        _movementJump.performed -= OffJump;
+        _movementJump.canceled -= OffJump;
         _movementJump.Disable();
 
         _movementInvisible.performed -= Invisible;
@@ -183,35 +183,43 @@ public class SCRPT_Player_Movement : MonoBehaviour
         _movementDoor.Disable();
     }
 
-    private void Jump(InputAction.CallbackContext context)
-    {
+    //private void Jump(InputAction.CallbackContext context)
+    //{
 
-        if (isGrounded == true)
+    //    if (isGrounded == true)
+    //    {
+    //        AudioManager.PlaySFX(AudioManager.SFXJump);
+    //        Jumping = true;
+    //        jumpTimeCounter = jumpTime;
+    //        rb.velocity = (Vector2.up * JumpAmount);
+    //    }
+
+    //    if (Jumping == true)
+    //    {
+    //        if (jumpTimeCounter > 0)
+    //        {
+    //            rb.velocity = (Vector2.up * JumpAmount);
+    //            jumpTimeCounter -= Time.deltaTime;
+    //        }
+    //        else
+    //        {
+    //            Jumping = false;
+    //        }
+
+
+    //    }
+
+    //}
+
+    private void HoldJump(InputAction.CallbackContext context) {
+
+         if (isGrounded == true)
         {
             AudioManager.PlaySFX(AudioManager.SFXJump);
             Jumping = true;
             jumpTimeCounter = jumpTime;
             rb.velocity = (Vector2.up * JumpAmount);
         }
-
-        if (Input.GetKey(KeyCode.Space) && Jumping == true)
-        {
-            if (jumpTimeCounter > 0)
-            {
-                rb.velocity = (Vector2.up * JumpAmount);
-                jumpTimeCounter -= Time.deltaTime;
-            }
-            else
-            {
-                Jumping = false;
-            }
-
-
-        }
-
-    }
-
-    private void HoldJump(InputAction.CallbackContext context) {
 
         if (Jumping == true)
         {
@@ -232,6 +240,15 @@ public class SCRPT_Player_Movement : MonoBehaviour
     private void OffJump(InputAction.CallbackContext context)
     {
             Jumping = false;
+
+        if (rb.velocity.y < 0)
+        {
+            rb.velocity += Vector2.up * Physics2D.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
+        }
+        else if (rb.velocity.y > 0)
+        {
+            rb.velocity += Vector2.up * Physics2D.gravity.y * (lowJumpMultiplier - 1) * Time.deltaTime;
+        }
     }
 
     private void Invisible(InputAction.CallbackContext context)
@@ -390,10 +407,14 @@ public class SCRPT_Player_Movement : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D SolDetection1)
     {
-        AudioManager.PlaySFX(AudioManager.SFXLanding);
-        ParticleController.fallParticle.Play();
         Jumping = false;
         Debug.Log("Coucou");
+
+        if (isGrounded == true)
+        {
+            AudioManager.PlaySFX(AudioManager.SFXLanding);
+            ParticleController.fallParticle.Play();
+        }
     }
     private void ExitTriggerEnter2D(Collider2D SolDetection1)
     {
