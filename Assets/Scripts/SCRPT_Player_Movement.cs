@@ -405,7 +405,7 @@ public class SCRPT_Player_Movement : MonoBehaviour
     //    }
     //}
 
-    private void OnTriggerEnter2D(Collider2D SolDetection1)
+    private void OnTriggerEnter2D(Collider2D Ground_Detector)
     {
         Jumping = false;
         Debug.Log("Coucou");
@@ -416,7 +416,7 @@ public class SCRPT_Player_Movement : MonoBehaviour
             ParticleController.fallParticle.Play();
         }
     }
-    private void ExitTriggerEnter2D(Collider2D SolDetection1)
+    private void ExitTriggerEnter2D(Collider2D Ground_Detector)
     {
         Jumping = true;
     }
