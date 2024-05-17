@@ -7,11 +7,15 @@ public class SCRPT_FinishPoint : MonoBehaviour
 {
     [SerializeField] bool goNextLevel;
     [SerializeField] string levelName;
+ [SerializeField] bool alreadyPlayed;
+
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (!alreadyPlayed){
         if (collision.CompareTag("Player"))
         {
+alreadyPlayed = true;
             if (goNextLevel)
             {
                 UnlockNewLevel();
@@ -24,6 +28,7 @@ public class SCRPT_FinishPoint : MonoBehaviour
             
         }
     }
+}
 
     private void UnlockNewLevel()
     {

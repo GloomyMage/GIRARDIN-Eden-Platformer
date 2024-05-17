@@ -34,7 +34,6 @@ public class SCRPT_Player_Movement : MonoBehaviour
     [SerializeField] Animator anim;
     [SerializeField] CapsuleCollider2D capsule_collider;
     public bool phantom = false;
-    public bool CanMove = true;
 
     // Knockback
     [Header("----------===== Knockback =====----------")]
@@ -91,18 +90,12 @@ public class SCRPT_Player_Movement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (CanMove == true)
-        {
             lateral();
-        }
     }
 
     private void FixedUpdate()
     {
         isGrounded = Physics2D.OverlapCircle(Ground_Detector.position, checkRadius, whatIsGround);
-
-        if (CanMove == true)
-        {
 
             if (rb.velocity.y < 0)
             {
@@ -145,7 +138,6 @@ public class SCRPT_Player_Movement : MonoBehaviour
             }
 
             Vector2 moveDir = _movementAction.ReadValue<Vector2>();
-        }
     }
 
     private void OnEnable()
