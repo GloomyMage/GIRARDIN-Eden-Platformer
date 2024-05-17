@@ -34,6 +34,7 @@ public class SCRPT_Player_Movement : MonoBehaviour
     [SerializeField] Animator anim;
     [SerializeField] CapsuleCollider2D capsule_collider;
     public bool phantom = false;
+    public bool CanMove = true;
 
     // Knockback
     [Header("----------===== Knockback =====----------")]
@@ -90,55 +91,61 @@ public class SCRPT_Player_Movement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
-        lateral();
+        if (CanMove == true)
+        {
+            lateral();
+        }
     }
 
     private void FixedUpdate()
     {
         isGrounded = Physics2D.OverlapCircle(Ground_Detector.position, checkRadius, whatIsGround);
 
-        if (rb.velocity.y < 0)
+        if (CanMove == true)
         {
-            rb.velocity += Vector2.up * Physics2D.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
-        }
-        else if (rb.velocity.y > 0 && !Input.GetKey(KeyCode.Space))
-        {
-            rb.velocity += Vector2.up * Physics2D.gravity.y * (lowJumpMultiplier - 1) * Time.deltaTime;
-        }
 
-
-        if (KBCounter <= 0)
-        {
-            moveInput = Input.GetAxis("Horizontal");
-            rb.velocity = new Vector2(moveInput * movement_speed, rb.velocity.y);
-
-        }
-
-        else
-        {
-            if (KnockFromRight == true)
+            if (rb.velocity.y < 0)
             {
-                rb.velocity = new Vector2(-KBForce, KBForce);
+                rb.velocity += Vector2.up * Physics2D.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
             }
-            else if (KnockFromRight == false)
+            else if (rb.velocity.y > 0 && !Input.GetKey(KeyCode.Space))
             {
-                rb.velocity = new Vector2(KBForce, KBForce);
+                rb.velocity += Vector2.up * Physics2D.gravity.y * (lowJumpMultiplier - 1) * Time.deltaTime;
             }
-        }
 
-        KBCounter -= Time.deltaTime;
 
-        if (moveInput > 0)
-        {
-            transform.eulerAngles = new Vector3(0, 0, 0);
-        }
-        else if (moveInput < 0)
-        {
-            transform.eulerAngles = new Vector3(0, 180, 0);
-        }
+            if (KBCounter <= 0)
+            {
+                moveInput = Input.GetAxis("Horizontal");
+                rb.velocity = new Vector2(moveInput * movement_speed, rb.velocity.y);
 
-        Vector2 moveDir = _movementAction.ReadValue<Vector2>();
+            }
+
+            else
+            {
+                if (KnockFromRight == true)
+                {
+                    rb.velocity = new Vector2(-KBForce, KBForce);
+                }
+                else if (KnockFromRight == false)
+                {
+                    rb.velocity = new Vector2(KBForce, KBForce);
+                }
+            }
+
+            KBCounter -= Time.deltaTime;
+
+            if (moveInput > 0)
+            {
+                transform.eulerAngles = new Vector3(0, 0, 0);
+            }
+            else if (moveInput < 0)
+            {
+                transform.eulerAngles = new Vector3(0, 180, 0);
+            }
+
+            Vector2 moveDir = _movementAction.ReadValue<Vector2>();
+        }
     }
 
     private void OnEnable()
