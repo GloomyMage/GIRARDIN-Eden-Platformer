@@ -97,7 +97,9 @@ public class SCRPT_Player_Movement : MonoBehaviour
     {
         isGrounded = Physics2D.OverlapCircle(Ground_Detector.position, checkRadius, whatIsGround);
 
-            if (rb.velocity.y < 0)
+        Player_Animator.SetFloat("Falling", (rb.velocity.y));
+
+        if (rb.velocity.y < 0)
             {
                 rb.velocity += Vector2.up * Physics2D.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
             }
@@ -106,8 +108,9 @@ public class SCRPT_Player_Movement : MonoBehaviour
                 rb.velocity += Vector2.up * Physics2D.gravity.y * (lowJumpMultiplier - 1) * Time.deltaTime;
             }
 
+        Player_Animator.SetFloat("Speed", Mathf.Abs(moveInput));
 
-            if (KBCounter <= 0)
+        if (KBCounter <= 0)
             {
                 moveInput = Input.GetAxis("Horizontal");
                 rb.velocity = new Vector2(moveInput * movement_speed, rb.velocity.y);
@@ -216,6 +219,7 @@ public class SCRPT_Player_Movement : MonoBehaviour
         {
             AudioManager.PlaySFX(AudioManager.SFXJump);
             Jumping = true;
+            Player_Animator.SetBool("IsJumping", true);
             jumpTimeCounter = jumpTime;
             rb.velocity = (Vector2.up * JumpAmount);
         }
@@ -280,6 +284,7 @@ public class SCRPT_Player_Movement : MonoBehaviour
 
 }
 
+
     private void Door(InputAction.CallbackContext context)
     {
 
@@ -289,6 +294,8 @@ public class SCRPT_Player_Movement : MonoBehaviour
     // Movement
     void lateral()
     {
+        Player_Animator.SetFloat("Speed", Mathf.Abs(moveInput));
+
        if (KBCounter <= 0)
       {
             moveInput = Input.GetAxis("Horizontal");
@@ -404,9 +411,10 @@ public class SCRPT_Player_Movement : MonoBehaviour
     //    }
     //}
 
-    private void OnTriggerEnter2D(Collider2D Ground_Detector)
+    public void OnTriggerEnter2D(Collider2D Ground_Detector)
     {
         Jumping = false;
+        Player_Animator.SetBool("IsJumping", false);
         Debug.Log("Coucou");
 
         if (isGrounded == true)

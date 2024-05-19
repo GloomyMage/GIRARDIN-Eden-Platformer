@@ -8,6 +8,7 @@ public class SCRPT_SceneController : MonoBehaviour
     public static SCRPT_SceneController instance;
     [SerializeField] Animator transitionAnim;
 
+
     private void Awake()
     {
         if (instance == null)
