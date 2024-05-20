@@ -264,6 +264,7 @@ public class SCRPT_Player_Movement : MonoBehaviour
             sprite_renderer.color = col;
             Intensity.intensity = 0.15f;
             Ghost.isChasing = false;
+            Player_Animator.SetBool("Crouch", true);
             Physics2D.IgnoreLayerCollision(6, 7, true);
             movement_speed = 0f;
             JumpAmount = 0f;
@@ -277,6 +278,7 @@ public class SCRPT_Player_Movement : MonoBehaviour
         col.a = 1;
         sprite_renderer.color = col;
         Intensity.intensity = 1f;
+        Player_Animator.SetBool("Crouch", false);
         Physics2D.IgnoreLayerCollision(6, 7, false);
         movement_speed = 6f;
         JumpAmount = 10f;

@@ -66,7 +66,7 @@ PrefabInstance:
     - target: {fileID: 2919982485378675959, guid: 0173d8872924e9a40bb7cac5afe866fd,
         type: 3}
       propertyPath: m_Size.y
-      value: 1.8244829
+      value: 1.7540649
       objectReference: {fileID: 0}
     - target: {fileID: 2919982485378675959, guid: 0173d8872924e9a40bb7cac5afe866fd,
         type: 3}
@@ -76,7 +76,7 @@ PrefabInstance:
     - target: {fileID: 2919982485378675959, guid: 0173d8872924e9a40bb7cac5afe866fd,
         type: 3}
       propertyPath: m_Offset.y
-      value: -0.13927054
+      value: -0.104061544
       objectReference: {fileID: 0}
     - target: {fileID: 2919982485378675959, guid: 0173d8872924e9a40bb7cac5afe866fd,
         type: 3}
@@ -97,7 +97,7 @@ PrefabInstance:
     - target: {fileID: 5592605478865641890, guid: 0173d8872924e9a40bb7cac5afe866fd,
         type: 3}
       propertyPath: m_SortingLayer
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 5592605478865641890, guid: 0173d8872924e9a40bb7cac5afe866fd,
         type: 3}
@@ -119,6 +119,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 3416400489571725120}
+    - targetCorrespondingSourceObject: {fileID: 7766511436806388832, guid: 0173d8872924e9a40bb7cac5afe866fd,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5923552040229861389}
   m_SourcePrefab: {fileID: 100100000, guid: 0173d8872924e9a40bb7cac5afe866fd, type: 3}
 --- !u!1 &1723583977425443379 stripped
 GameObject:
@@ -140,6 +144,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sprite_renderer: {fileID: 3584788832644843505}
   playerTransform: {fileID: 0}
+--- !u!95 &5923552040229861389
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1723583977425443379}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 92cc03a95fa1c52438476bff317be956, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!212 &3584788832644843505 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 5592605478865641890, guid: 0173d8872924e9a40bb7cac5afe866fd,
