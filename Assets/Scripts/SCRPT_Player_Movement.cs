@@ -25,6 +25,8 @@ public class SCRPT_Player_Movement : MonoBehaviour
     private InputAction _movementJump;
     private InputAction _movementInvisible;
     private InputAction _movementDoor;
+    private InputAction _movementTalk;
+    private InputAction _movementEscape;
 
     // Attributes
     [Header ("----------=====  Attributes  =====----------")]
@@ -77,6 +79,15 @@ public class SCRPT_Player_Movement : MonoBehaviour
         // Scene Manager
         Scene currentScene = SceneManager.GetActiveScene();
         sceneName = currentScene.name;
+
+        if (sceneName == "SCN_Level_2")
+        {
+            Player_Animator.SetBool("IsJumping", true);
+        }
+        else
+        {
+            Player_Animator.SetBool("IsJumping", false);
+        }
     }
 
     private void Awake()
@@ -157,6 +168,9 @@ public class SCRPT_Player_Movement : MonoBehaviour
         _movementDoor = controls.Player.Door;
         _movementDoor.Enable();
 
+        _movementTalk = controls.Player.Talk;
+        _movementTalk.Enable();
+
        // _movementJump.started += Jump;
         _movementJump.performed += HoldJump;
         _movementJump.canceled += OffJump;
@@ -165,7 +179,9 @@ public class SCRPT_Player_Movement : MonoBehaviour
         _movementInvisible.canceled += Visible;
 
         _movementDoor.started += Door;
-        
+
+        _movementTalk.started += Talk;
+
     }
 
     private void OnDisable()
@@ -183,6 +199,9 @@ public class SCRPT_Player_Movement : MonoBehaviour
 
         _movementDoor.started -= Door;
         _movementDoor.Disable();
+
+        _movementTalk.started -= Talk;
+        _movementTalk.Disable();
     }
 
     //private void Jump(InputAction.CallbackContext context)
@@ -263,12 +282,12 @@ public class SCRPT_Player_Movement : MonoBehaviour
             col.a = 0.333f;
             sprite_renderer.color = col;
             Intensity.intensity = 0.15f;
-            Ghost.isChasing = false;
             Player_Animator.SetBool("Crouch", true);
             Physics2D.IgnoreLayerCollision(6, 7, true);
             movement_speed = 0f;
             JumpAmount = 0f;
             phantom = true;
+            Ghost.isChasing = false;
         }
     }
 
@@ -288,6 +307,11 @@ public class SCRPT_Player_Movement : MonoBehaviour
 
 
     private void Door(InputAction.CallbackContext context)
+    {
+
+    }
+
+    private void Talk(InputAction.CallbackContext context)
     {
 
     }

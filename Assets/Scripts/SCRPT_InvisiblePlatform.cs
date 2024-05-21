@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Rendering.Universal;
 
 public class SCRPT_InvisiblePlatform : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class SCRPT_InvisiblePlatform : MonoBehaviour
     private InputAction _movementInvisible;
 
     [SerializeField] SpriteRenderer sprite_renderer;
+    [SerializeField] ShadowCaster2D shadowCaster;
 
 
     private void Awake()
@@ -47,13 +49,15 @@ public class SCRPT_InvisiblePlatform : MonoBehaviour
            
             Color col = sprite_renderer.color;
             col.a = 1;
-            sprite_renderer.color = col;
+        shadowCaster.gameObject.SetActive(true);
+        sprite_renderer.color = col;
         }
 
     private void Visible(InputAction.CallbackContext context)
     {
         Color col = sprite_renderer.color;
         col.a = 0;
+        shadowCaster.gameObject.SetActive(false);
         sprite_renderer.color = col;
     }
  

@@ -62,6 +62,24 @@ public partial class @NewControls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Talk"",
+                    ""type"": ""Button"",
+                    ""id"": ""dc0cd1a7-d1ce-432b-8a02-77fd45eef991"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Escape"",
+                    ""type"": ""Button"",
+                    ""id"": ""06c85880-003c-48b1-9e82-d5d4018997df"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -79,7 +97,7 @@ public partial class @NewControls: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""104936e2-b695-45e7-9e5a-6ba65df9e2d1"",
-                    ""path"": ""<Gamepad>/buttonEast"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -211,7 +229,7 @@ public partial class @NewControls: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""236acfcb-58a2-4966-96cb-031f4b703870"",
-                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""path"": ""<Gamepad>/buttonEast"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -251,6 +269,50 @@ public partial class @NewControls: IInputActionCollection2, IDisposable
                     ""action"": ""Door"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""5921d565-33bd-4a0e-b30e-a555c01fd6fc"",
+                    ""path"": ""<Keyboard>/enter"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Talk"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""5fb6127c-0c29-430e-8ca8-5a0aa2bcae7b"",
+                    ""path"": ""<Gamepad>/buttonWest"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Talk"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""758ec266-b6af-4ca5-94da-004a37e2cc1e"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Escape"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a2403ed9-5e93-4ba2-b566-bd35341bf1ea"",
+                    ""path"": ""<Gamepad>/start"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Escape"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -263,6 +325,8 @@ public partial class @NewControls: IInputActionCollection2, IDisposable
         m_Player_Movement = m_Player.FindAction("Movement", throwIfNotFound: true);
         m_Player_Invisible = m_Player.FindAction("Invisible", throwIfNotFound: true);
         m_Player_Door = m_Player.FindAction("Door", throwIfNotFound: true);
+        m_Player_Talk = m_Player.FindAction("Talk", throwIfNotFound: true);
+        m_Player_Escape = m_Player.FindAction("Escape", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -328,6 +392,8 @@ public partial class @NewControls: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Movement;
     private readonly InputAction m_Player_Invisible;
     private readonly InputAction m_Player_Door;
+    private readonly InputAction m_Player_Talk;
+    private readonly InputAction m_Player_Escape;
     public struct PlayerActions
     {
         private @NewControls m_Wrapper;
@@ -336,6 +402,8 @@ public partial class @NewControls: IInputActionCollection2, IDisposable
         public InputAction @Movement => m_Wrapper.m_Player_Movement;
         public InputAction @Invisible => m_Wrapper.m_Player_Invisible;
         public InputAction @Door => m_Wrapper.m_Player_Door;
+        public InputAction @Talk => m_Wrapper.m_Player_Talk;
+        public InputAction @Escape => m_Wrapper.m_Player_Escape;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -357,6 +425,12 @@ public partial class @NewControls: IInputActionCollection2, IDisposable
             @Door.started += instance.OnDoor;
             @Door.performed += instance.OnDoor;
             @Door.canceled += instance.OnDoor;
+            @Talk.started += instance.OnTalk;
+            @Talk.performed += instance.OnTalk;
+            @Talk.canceled += instance.OnTalk;
+            @Escape.started += instance.OnEscape;
+            @Escape.performed += instance.OnEscape;
+            @Escape.canceled += instance.OnEscape;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -373,6 +447,12 @@ public partial class @NewControls: IInputActionCollection2, IDisposable
             @Door.started -= instance.OnDoor;
             @Door.performed -= instance.OnDoor;
             @Door.canceled -= instance.OnDoor;
+            @Talk.started -= instance.OnTalk;
+            @Talk.performed -= instance.OnTalk;
+            @Talk.canceled -= instance.OnTalk;
+            @Escape.started -= instance.OnEscape;
+            @Escape.performed -= instance.OnEscape;
+            @Escape.canceled -= instance.OnEscape;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -396,5 +476,7 @@ public partial class @NewControls: IInputActionCollection2, IDisposable
         void OnMovement(InputAction.CallbackContext context);
         void OnInvisible(InputAction.CallbackContext context);
         void OnDoor(InputAction.CallbackContext context);
+        void OnTalk(InputAction.CallbackContext context);
+        void OnEscape(InputAction.CallbackContext context);
     }
 }

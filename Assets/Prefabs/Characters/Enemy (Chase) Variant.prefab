@@ -11,12 +11,12 @@ PrefabInstance:
     - target: {fileID: 1510210245043327170, guid: 0173d8872924e9a40bb7cac5afe866fd,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1510210245043327170, guid: 0173d8872924e9a40bb7cac5afe866fd,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1510210245043327170, guid: 0173d8872924e9a40bb7cac5afe866fd,
         type: 3}
@@ -144,6 +144,11 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7366339105083986662, guid: 0173d8872924e9a40bb7cac5afe866fd,
+        type: 3}
+      propertyPath: m_Mass
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 7766511436806388832, guid: 0173d8872924e9a40bb7cac5afe866fd,
         type: 3}
       propertyPath: m_Name
@@ -183,7 +188,8 @@ MonoBehaviour:
   - {fileID: 0}
   patrolDestination: 0
   movespeed: 3
-  Chasespeed: 5
+  walkspeed: 4
+  chasespeed: 8
   playerTransform: {fileID: 0}
   isChasing: 0
   chaseDistance: 4

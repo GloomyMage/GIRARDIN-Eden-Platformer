@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -9,23 +10,39 @@ public class SCRPT_Pause : MonoBehaviour
 {
     public GameObject pauseMenu;
 
+    private InputAction _movementEscape;
+    public NewControls controls;
     public static bool GameIsPaused;
 
-    void Update()
+    private void OnEnable()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        _movementEscape = controls.Player.Escape;
+        _movementEscape.Enable();
+
+        _movementEscape.started += Escape;
+
+
+    }
+
+    private void OnDisable()
+    {
+        _movementEscape.started -= Escape;
+        _movementEscape.Disable();
+
+    }
+
+    private void Escape(InputAction.CallbackContext context)
+    {
+        if (GameIsPaused)
         {
-            if (GameIsPaused)
-            {
-                Resume();
-            }
-
-            else
-            {
-                Pause();
-            }
-
+            Resume();
         }
+
+        else
+        {
+            Pause();
+        }
+
     }
 
     public void Pause()
