@@ -5165,6 +5165,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4d5b4a57fdf80140a20cef72034980f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemy_speed: 1
+  enemy_speed: 3
   distance: 1
   ground_Detection: {fileID: 7621433283954646231}

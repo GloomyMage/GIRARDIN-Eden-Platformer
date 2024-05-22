@@ -1,0 +1,55 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5dbd068259c805c41b7bcaead75c73d0, type: 3}
+  m_Name: Chapter 1 Conversation
+  m_EditorClassIdentifier: Assembly-CSharp::Conversation
+  speakerLeft: {fileID: 11400000, guid: 43ce0d4856646634ea19d8a29acef5c9, type: 2}
+  speakerRight: {fileID: 11400000, guid: 7b9d6e48f741f294aa83337d3a16e243, type: 2}
+  lines:
+  - character: {fileID: 11400000, guid: 43ce0d4856646634ea19d8a29acef5c9, type: 2}
+    text: "Ouch... \nmy head hurts..."
+    mood: 0
+  - character: {fileID: 11400000, guid: 7b9d6e48f741f294aa83337d3a16e243, type: 2}
+    text: Finally Awake?
+    mood: 0
+  - character: {fileID: 11400000, guid: 43ce0d4856646634ea19d8a29acef5c9, type: 2}
+    text: Who is talking? Where am I?
+    mood: 0
+  - character: {fileID: 11400000, guid: 7b9d6e48f741f294aa83337d3a16e243, type: 2}
+    text: 'Hold on, Young One, one thing at a time.
+
+      I''m Meng Po, Goddess
+      of Oblivion.
+
+      You are in Diyu where souls wander after their death.'
+    mood: 0
+  - character: {fileID: 11400000, guid: 43ce0d4856646634ea19d8a29acef5c9, type: 2}
+    text: Wait! I am... no... It can't be...
+    mood: 0
+  - character: {fileID: 11400000, guid: 7b9d6e48f741f294aa83337d3a16e243, type: 2}
+    text: 'Stop interrupting me!
+
+      As I was saying, if you''re here it''s because
+      you are no longer in the realm of the living.'
+    mood: 0
+  - character: {fileID: 11400000, guid: 43ce0d4856646634ea19d8a29acef5c9, type: 2}
+    text: This is a bad joke... I just need to get back home, this old lady can't
+      be telling the truth...
+    mood: 0
+  - character: {fileID: 11400000, guid: 7b9d6e48f741f294aa83337d3a16e243, type: 2}
+    text: 'This is pointless, suit yourself.
+
+      I''ll stay here, when you change
+      your mind, let me know.'
+    mood: 0
+  question: {fileID: 0}
+  nextConversation: {fileID: 0}

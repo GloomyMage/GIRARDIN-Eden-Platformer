@@ -9,6 +9,7 @@ public class SCRPT_AudioManager : MonoBehaviour
 {
     [Header("----------===== Audio Source =====----------")]
     [SerializeField] AudioSource musicSource;
+    [SerializeField] AudioSource musicSourceBis;
     [SerializeField] AudioSource SFXSource;
 
     [Header("----------===== Audio Clip =====----------")]
@@ -73,11 +74,15 @@ public class SCRPT_AudioManager : MonoBehaviour
         {
             musicSource.clip = MusicLVL3;
             musicSource.Play();
+            musicSourceBis.clip = SFXWind;
+            musicSourceBis.Play();
         }
         else if (sceneName == "SCN_Level_4")
         {
             musicSource.clip = MusicLVL4;
             musicSource.Play();
+            musicSourceBis.clip = SFXRain;
+            musicSourceBis.Play();
         }
         else if (sceneName == "SCN_Level_5")
         {
