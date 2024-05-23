@@ -49,16 +49,16 @@ public class SCRPT_InvisiblePlatform : MonoBehaviour
            
             Color col = sprite_renderer.color;
             col.a = 1;
-        shadowCaster.gameObject.SetActive(true);
         sprite_renderer.color = col;
-        }
+        shadowCaster.gameObject.SetActive(true);
+    }
 
     private void Visible(InputAction.CallbackContext context)
     {
         Color col = sprite_renderer.color;
         col.a = 0;
-        shadowCaster.gameObject.SetActive(false);
         sprite_renderer.color = col;
+        shadowCaster.gameObject.SetActive(false);
     }
  
 

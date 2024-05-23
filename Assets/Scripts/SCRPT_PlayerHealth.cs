@@ -10,6 +10,8 @@ public class SCRPT_PlayerHealth : MonoBehaviour
 
     public SCRPT_GameController gameController;
     public SCRPT_Chase chase;
+    public SCRPT_Chase chase2;
+    public SCRPT_Chase chase3;
 
     // Start is called before the first frame update
     void Start()
@@ -24,6 +26,8 @@ public void TakeDamage(int damage)
         {
             gameController.Die();
             chase.isChasing = false;
+            chase2.isChasing = false;
+            chase3.isChasing = false;
             health = maxHealth;
            
 

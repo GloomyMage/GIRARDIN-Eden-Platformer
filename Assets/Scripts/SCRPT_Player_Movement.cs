@@ -15,6 +15,8 @@ public class SCRPT_Player_Movement : MonoBehaviour
     [Header("----------===== Other Scripts =====----------")]
     public Light2D Intensity;
     public SCRPT_Chase Ghost;
+    public SCRPT_Chase Ghost2;
+    public SCRPT_Chase Ghost3;
     public SCRPT_ParticleController ParticleController;
     public SCRPT_AudioManager AudioManager;
     public NewControls controls;
@@ -288,6 +290,8 @@ public class SCRPT_Player_Movement : MonoBehaviour
             JumpAmount = 0f;
             phantom = true;
             Ghost.isChasing = false;
+            Ghost2.isChasing = false;
+            Ghost3.isChasing = false;
         }
     }
 
