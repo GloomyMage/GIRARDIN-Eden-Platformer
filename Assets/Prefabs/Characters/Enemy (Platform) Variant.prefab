@@ -5088,6 +5088,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 1441309674311420994}
+    - targetCorrespondingSourceObject: {fileID: 7766511436806388832, guid: 0173d8872924e9a40bb7cac5afe866fd,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6293766627994065429}
   m_SourcePrefab: {fileID: 100100000, guid: 0173d8872924e9a40bb7cac5afe866fd, type: 3}
 --- !u!4 &287024753379527973 stripped
 Transform:
@@ -5168,3 +5172,24 @@ MonoBehaviour:
   enemy_speed: 3
   distance: 1
   ground_Detection: {fileID: 7621433283954646231}
+--- !u!95 &6293766627994065429
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8991118114221629831}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 1e3a970f843bd0d49a7063adb7ae73c1, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

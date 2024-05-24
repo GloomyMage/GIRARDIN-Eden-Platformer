@@ -64,7 +64,7 @@ MonoBehaviour:
   SFXButton: {fileID: 0}
   SFXWind: {fileID: 8300000, guid: db129c23f1af60c4ea5a189afb04a719, type: 3}
   SFXRain: {fileID: 8300000, guid: 7ee33cd3d7437484d9c386fb0760a378, type: 3}
-  SFXEnemy: {fileID: 0}
+  SFXEnemy: {fileID: 8300000, guid: 99ba36cc5b7fa2740a9fcb8b3c0cb81e, type: 3}
 --- !u!1 &5109189899462591604
 GameObject:
   m_ObjectHideFlags: 0

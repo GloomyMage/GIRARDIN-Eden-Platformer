@@ -5,8 +5,10 @@ using UnityEngine;
 public class SCRPT_Chase : MonoBehaviour
 {
     public SCRPT_Player_Movement player;
+    public SCRPT_AudioManager AudioManager;
 
     public SpriteRenderer sprite_renderer;
+    [SerializeField] Animator Oni_Animator;
     public Transform[] patrolPoints;
     public int patrolDestination = 0;
     public float movespeed;
@@ -25,6 +27,8 @@ public class SCRPT_Chase : MonoBehaviour
     {
         if (isChasing)
         {
+            Oni_Animator.SetBool("Wrath", true);
+
             if  (Vector2.Distance(transform.position, playerTransform.position) > chaseDistance * 3 || player.phantom == true)
                 {
                 isChasing = false;
@@ -46,10 +50,13 @@ public class SCRPT_Chase : MonoBehaviour
         }
         else
         {
+            Oni_Animator.SetBool("Wrath", false);
+
             if (Vector2.Distance(transform.position, playerTransform.position) < chaseDistance && player.phantom == false)
             {
+                AudioManager.PlaySFX(AudioManager.SFXEnemy);
                 isChasing = true;
-                
+
             }
 
                 else if (patrolDestination == 0)
