@@ -8,6 +8,7 @@ public class SCRPT_Settings : MonoBehaviour
 {
 
     public TMPro.TMP_Dropdown resolutionDropdown;
+    public SCRPT_AudioManager AudioManager;
 
     Resolution[] resolutions;
 

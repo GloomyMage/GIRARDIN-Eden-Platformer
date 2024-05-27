@@ -38,6 +38,7 @@ public class SCRPT_Player_Movement : MonoBehaviour
     [SerializeField] Animator anim;
     [SerializeField] CapsuleCollider2D capsule_collider;
     public bool phantom = false;
+    public bool canMove = false;
 
     // Knockback
     [Header("----------===== Knockback =====----------")]
@@ -82,6 +83,8 @@ public class SCRPT_Player_Movement : MonoBehaviour
         Scene currentScene = SceneManager.GetActiveScene();
         sceneName = currentScene.name;
 
+        canMove = true;
+
         if (sceneName == "SCN_Level_2")
         {
             Player_Animator.SetBool("IsJumping", true);
@@ -103,7 +106,10 @@ public class SCRPT_Player_Movement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (canMove)
+        {
             lateral();
+        }
     }
 
     private void FixedUpdate()
@@ -116,14 +122,17 @@ public class SCRPT_Player_Movement : MonoBehaviour
             {
                 rb.velocity += Vector2.up * Physics2D.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
             }
-            else if (rb.velocity.y > 0 && !Input.GetKey(KeyCode.Space))
+            else if (rb.velocity.y > 0 && (!Input.GetKey(KeyCode.Space) || !Input.GetButton("Jump")))
             {
                 rb.velocity += Vector2.up * Physics2D.gravity.y * (lowJumpMultiplier - 1) * Time.deltaTime;
             }
 
         Player_Animator.SetFloat("Speed", Mathf.Abs(moveInput));
 
-        if (KBCounter <= 0)
+        if (canMove)
+        {
+
+            if (KBCounter <= 0)
             {
                 moveInput = Input.GetAxis("Horizontal");
                 rb.velocity = new Vector2(moveInput * movement_speed, rb.velocity.y);
@@ -154,6 +163,7 @@ public class SCRPT_Player_Movement : MonoBehaviour
             }
 
             Vector2 moveDir = _movementAction.ReadValue<Vector2>();
+        }
     }
 
     private void OnEnable()
@@ -236,6 +246,8 @@ public class SCRPT_Player_Movement : MonoBehaviour
 
     private void HoldJump(InputAction.CallbackContext context) {
 
+        if (canMove) { 
+
          if (isGrounded == true)
         {
             AudioManager.PlaySFX(AudioManager.SFXJump);
@@ -245,19 +257,20 @@ public class SCRPT_Player_Movement : MonoBehaviour
             rb.velocity = (Vector2.up * JumpAmount);
         }
 
-        if (Jumping == true)
-        {
-            if (jumpTimeCounter > 0)
+            if (Jumping == true)
             {
-                rb.velocity = (Vector2.up * JumpAmount);
-                jumpTimeCounter -= Time.deltaTime;
-            }
-            else
-            {
-                Jumping = false;
-            }
+                if (jumpTimeCounter > 0)
+                {
+                    rb.velocity = (Vector2.up * JumpAmount);
+                    jumpTimeCounter -= Time.deltaTime;
+                }
+                else
+                {
+                    Jumping = false;
+                }
 
 
+            }
         }
     }
 
@@ -277,21 +290,24 @@ public class SCRPT_Player_Movement : MonoBehaviour
 
     private void Invisible(InputAction.CallbackContext context)
     {
-        if (sceneName != "SCN_Level_1")
+        if (canMove)
         {
-            AudioManager.PlaySFX(AudioManager.SFXTransparent);
-            Color col = sprite_renderer.color;
-            col.a = 0.333f;
-            sprite_renderer.color = col;
-            Intensity.intensity = 0.15f;
-            Player_Animator.SetBool("Crouch", true);
-            Physics2D.IgnoreLayerCollision(6, 7, true);
-            movement_speed = 0f;
-            JumpAmount = 0f;
-            phantom = true;
-            Ghost.isChasing = false;
-            Ghost2.isChasing = false;
-            Ghost3.isChasing = false;
+            if (sceneName != "SCN_Level_1")
+            {
+                AudioManager.PlaySFX(AudioManager.SFXTransparent);
+                Color col = sprite_renderer.color;
+                col.a = 0.333f;
+                sprite_renderer.color = col;
+                Intensity.intensity = 0.15f;
+                Player_Animator.SetBool("Crouch", true);
+                Physics2D.IgnoreLayerCollision(6, 7, true);
+                movement_speed = 0f;
+                JumpAmount = 0f;
+                phantom = true;
+                Ghost.isChasing = false;
+                Ghost2.isChasing = false;
+                Ghost3.isChasing = false;
+            }
         }
     }
 
@@ -456,6 +472,16 @@ public class SCRPT_Player_Movement : MonoBehaviour
     private void ExitTriggerEnter2D(Collider2D Ground_Detector)
     {
         Jumping = true;
+    }
+
+    public void stopMovement()
+    {
+        canMove = false;
+    }
+
+    public void playMovement()
+    {
+        canMove = true; 
     }
 }
 

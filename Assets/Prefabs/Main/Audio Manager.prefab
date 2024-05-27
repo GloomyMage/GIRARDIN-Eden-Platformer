@@ -56,12 +56,12 @@ MonoBehaviour:
   MusicLVL4: {fileID: 8300000, guid: 6b08ccefe2c8c5e4fb69ec0c3d5d92df, type: 3}
   MusicLVL5: {fileID: 8300000, guid: 97a3355649e9f1c4faf93f28eb2d3220, type: 3}
   MusicMenu: {fileID: 8300000, guid: 70b11bf620ea41043a07888402a26e6a, type: 3}
-  SFXJump: {fileID: 0}
-  SFXLanding: {fileID: 8300000, guid: b6b64a5d2b0aa3745992395f75039438, type: 3}
-  SFXTransparent: {fileID: 8300000, guid: f7d95d275bdb47d4d8abc9d56fec8715, type: 3}
-  SFXDeath: {fileID: 0}
-  SFXCheckpoint: {fileID: 0}
-  SFXButton: {fileID: 0}
+  SFXJump: {fileID: 8300000, guid: 945e8a39cba5f6640afa2c360a8270d0, type: 3}
+  SFXLanding: {fileID: 8300000, guid: a24c4677a3cfd1f4a991d0ac40bc05d6, type: 3}
+  SFXTransparent: {fileID: 8300000, guid: dd7774427513e5443acb23ce6cb761ad, type: 3}
+  SFXDeath: {fileID: 8300000, guid: b2fb183b5751e18449ef6a3ab05284a5, type: 3}
+  SFXCheckpoint: {fileID: 8300000, guid: ffeb6c4a7ebe85647981cf67c380be52, type: 3}
+  SFXButton: {fileID: 8300000, guid: 1de8013fb105d774cbdb24a4db571e10, type: 3}
   SFXWind: {fileID: 8300000, guid: db129c23f1af60c4ea5a189afb04a719, type: 3}
   SFXRain: {fileID: 8300000, guid: 7ee33cd3d7437484d9c386fb0760a378, type: 3}
   SFXEnemy: {fileID: 8300000, guid: 99ba36cc5b7fa2740a9fcb8b3c0cb81e, type: 3}

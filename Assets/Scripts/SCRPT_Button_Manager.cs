@@ -5,6 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class SCRPT_Button_Manager : MonoBehaviour
 {
+
+    public SCRPT_AudioManager AudioManager;
+
     public void ButtonPlay()
     {
         SceneManager.LoadScene("SCN_Level_1");
@@ -12,8 +15,11 @@ public class SCRPT_Button_Manager : MonoBehaviour
 
     public void ButtonOptions()
     {
+        AudioManager.PlaySFX(AudioManager.SFXButton);
         Debug.Log("What's up?");
     }
+
+
 
     public void ButtonQuit()
     {
