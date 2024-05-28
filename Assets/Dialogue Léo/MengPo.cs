@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class David : NPC, ITalkable
+public class MengPo : NPC, ITalkable
 {
 
     [SerializeField] private DialogueText dialogueText;

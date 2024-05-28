@@ -22,9 +22,9 @@ public abstract class NPC : MonoBehaviour, IInteractable
     {
             
      
-        if (Input.GetButtonDown("DialogueCustom") && IsWithinInteractDistance())
+        if (Input.GetKeyDown(KeyCode.Space) && IsWithinInteractDistance())
         {
-            //-------------------Intéraction with a NPC--------------
+            //-------------------Interaction with a NPC--------------
             Interact();
         }
         if (InteractSprite.gameObject.activeSelf && !IsWithinInteractDistance())
@@ -37,7 +37,7 @@ public abstract class NPC : MonoBehaviour, IInteractable
         }
         else if (!InteractSprite.gameObject.activeSelf && IsWithinInteractDistance())
         {
-            //----------- set interraction sprite ON ------------
+            //----------- set Interaction sprite ON ------------
 
             InteractSprite.gameObject.SetActive(true);
         }

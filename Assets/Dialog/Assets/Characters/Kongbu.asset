@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Kongbu
   m_EditorClassIdentifier: 
   fullName: Kongbu
-  portrait: {fileID: 21300000, guid: 6664b3ede70dd2e4fbee7c165596c61e, type: 3}
+  portrait: {fileID: 21300000, guid: 7f7ed32eb2294af478c02912f5ac2baa, type: 3}
   portraitAngry: {fileID: 0}

@@ -83,7 +83,7 @@ public class SCRPT_Player_Movement : MonoBehaviour
         Scene currentScene = SceneManager.GetActiveScene();
         sceneName = currentScene.name;
 
-        canMove = true;
+        canMove = false;
 
         if (sceneName == "SCN_Level_2")
         {
