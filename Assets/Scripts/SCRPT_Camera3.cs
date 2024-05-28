@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class SCRPT_Camera3 : MonoBehaviour
 {
@@ -9,6 +10,9 @@ public class SCRPT_Camera3 : MonoBehaviour
     public Transform target1;
     public Transform target2;
     public Transform target3;
+
+    private InputAction _movementEscape;
+    public NewControls controls;
 
     Vector3 velocity = Vector3.zero;
 
@@ -27,7 +31,7 @@ public class SCRPT_Camera3 : MonoBehaviour
     // Update is called once per frame
     void LateUpdate()
     {
-        if (Input.GetKeyDown(KeyCode.Escape) && count.count >= 0)
+        if ( Input.GetButtonDown("Submit") && count.count >= 0)
         {
             this.GetComponent<SCRPT_Camera3>().enabled = false;
             this.GetComponent<SCRPT_Camera_Control>().enabled = true;

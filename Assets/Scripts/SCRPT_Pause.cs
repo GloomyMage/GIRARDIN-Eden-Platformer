@@ -10,16 +10,16 @@ public class SCRPT_Pause : MonoBehaviour
 {
     public GameObject pauseMenu;
 
-    private InputAction _movementEscape;
+    public InputAction _movementEscape;
     public NewControls controls;
     public static bool GameIsPaused;
 
     private void OnEnable()
     {
-        _movementEscape = controls.Player.Escape;
+       _movementEscape = controls.Player.Escape;
         _movementEscape.Enable();
 
-        _movementEscape.started += Escape;
+      _movementEscape.started += Escape;
 
 
     }
@@ -31,7 +31,7 @@ public class SCRPT_Pause : MonoBehaviour
 
     }
 
-    private void Escape(InputAction.CallbackContext context)
+    public void Escape(InputAction.CallbackContext context)
     {
         if (GameIsPaused)
         {

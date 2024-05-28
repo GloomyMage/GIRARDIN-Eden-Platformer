@@ -34,7 +34,7 @@ MonoBehaviour:
     speaker: {fileID: 11400000, guid: eddfe009b49d3484d8dfb5498d6a2f17, type: 2}
     actions: []
   - text: This is a bad joke... I just need to get back home, this old lady can't
-      be saying the truth...
+      be telling the truth...
     speaker: {fileID: 11400000, guid: 755db819ff1a2ea4aa12594b5b3997b8, type: 2}
     actions: []
   - text: This is pointless, suit yourself. I'll stay here, when you change your

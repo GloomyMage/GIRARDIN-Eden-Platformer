@@ -22,7 +22,7 @@ public abstract class NPC : MonoBehaviour, IInteractable
     {
             
      
-        if (Input.GetKeyDown(KeyCode.Space) && IsWithinInteractDistance())
+        if (Input.GetButtonDown("Submit") && IsWithinInteractDistance())
         {
             //-------------------Interaction with a NPC--------------
             Interact();

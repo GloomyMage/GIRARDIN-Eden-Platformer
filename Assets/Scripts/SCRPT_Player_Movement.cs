@@ -118,15 +118,6 @@ public class SCRPT_Player_Movement : MonoBehaviour
 
         Player_Animator.SetFloat("Falling", (rb.velocity.y));
 
-        if (rb.velocity.y < 0)
-            {
-                rb.velocity += Vector2.up * Physics2D.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
-            }
-            else if (rb.velocity.y > 0 && (!Input.GetKey(KeyCode.Space) || !Input.GetButton("Jump")))
-            {
-                rb.velocity += Vector2.up * Physics2D.gravity.y * (lowJumpMultiplier - 1) * Time.deltaTime;
-            }
-
         Player_Animator.SetFloat("Speed", Mathf.Abs(moveInput));
 
         if (canMove)
@@ -163,6 +154,46 @@ public class SCRPT_Player_Movement : MonoBehaviour
             }
 
             Vector2 moveDir = _movementAction.ReadValue<Vector2>();
+
+
+
+            if (rb.velocity.y < 0)
+            {
+                rb.velocity += Vector2.up * Physics2D.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
+            }
+            else if (rb.velocity.y > 0 && !Input.GetButton("Jump"))
+            {
+                rb.velocity += Vector2.up * Physics2D.gravity.y * (lowJumpMultiplier - 1) * Time.deltaTime;
+            }
+
+
+            if (isGrounded == true && Input.GetButtonDown("Jump"))
+            {
+                AudioManager.PlaySFX(AudioManager.SFXJump);
+                Jumping = true;
+                jumpTimeCounter = jumpTime;
+                rb.velocity = (Vector2.up * JumpAmount);
+            }
+
+            if (Input.GetButton("Jump") && Jumping == true)
+            {
+                if (jumpTimeCounter > 0)
+                {
+                    rb.velocity = (Vector2.up * JumpAmount);
+                    jumpTimeCounter -= Time.deltaTime;
+                }
+                else
+                {
+                    Jumping = false;
+                }
+
+
+            }
+
+            if (Input.GetButton("Jump"))
+            {
+                Jumping = false;
+            }
         }
     }
 

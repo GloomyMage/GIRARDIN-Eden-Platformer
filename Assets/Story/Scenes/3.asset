@@ -16,7 +16,7 @@ MonoBehaviour:
   - text: 'You did it, are you ready for your next trial? '
     speaker: {fileID: 11400000, guid: eddfe009b49d3484d8dfb5498d6a2f17, type: 2}
     actions: []
-  - text: I'm not sure but I think I'm starting to getting it.
+  - text: I'm not sure but I think I'm starting to get it.
     speaker: {fileID: 11400000, guid: 755db819ff1a2ea4aa12594b5b3997b8, type: 2}
     actions: []
   - text: I'm happy to hear it, this is your next objective.

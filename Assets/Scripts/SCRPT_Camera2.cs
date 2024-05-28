@@ -27,7 +27,7 @@ public class SCRPT_Camera2 : MonoBehaviour
     // Update is called once per frame
     void LateUpdate()
     {
-        if (Input.GetKeyDown(KeyCode.Escape) && count.count >= 0)
+       if (Input.GetButtonDown("Submit") && count.count >= 0)
         {
             this.GetComponent<SCRPT_Camera2>().enabled = false;
             this.GetComponent<SCRPT_Camera_Control>().enabled = true;

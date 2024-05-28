@@ -42,7 +42,7 @@ public class GameController : MonoBehaviour
             Speaker2.gameObject.SetActive(true);
         }
 
-        if(Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0))
+        if(Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0) || Input.GetButtonDown("Talk"))
         {
             if (bottomBar.IsCompleted())
             {
@@ -63,7 +63,7 @@ public class GameController : MonoBehaviour
                 }
             }
         }
-        else if (Input.GetKeyDown(KeyCode.Escape))
+        else if (Input.GetButtonDown("Submit"))
         {
             text.gameObject.SetActive(false);
             image.gameObject.SetActive(false);
