@@ -23,7 +23,7 @@ public class SCRPT_Butterfly : MonoBehaviour
         Intensity.intensity = 0f;
     }
 
-    private void OnEnable()
+   public void OnEnable()
     {
 
         _movementInvisible = controls.Player.Invisible;
@@ -35,7 +35,7 @@ public class SCRPT_Butterfly : MonoBehaviour
 
     }
 
-    private void OnDisable()
+    public void OnDisable()
     {
 
         _movementInvisible.performed -= Invisible;
@@ -43,6 +43,7 @@ public class SCRPT_Butterfly : MonoBehaviour
         _movementInvisible.Disable();
 
     }
+   
 
 
     void Invisible(InputAction.CallbackContext context)

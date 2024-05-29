@@ -42,7 +42,7 @@ public class GameController : MonoBehaviour
             Speaker2.gameObject.SetActive(true);
         }
 
-        if(Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0) || Input.GetButtonDown("Talk"))
+        if(Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0) || Input.GetButtonDown("Chat"))
         {
             if (bottomBar.IsCompleted())
             {

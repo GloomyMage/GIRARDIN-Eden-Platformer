@@ -14,7 +14,7 @@ public class SCRPT_Pause : MonoBehaviour
     public NewControls controls;
     public static bool GameIsPaused;
 
-    private void OnEnable()
+   /* private void OnEnable()
     {
        _movementEscape = controls.Player.Escape;
         _movementEscape.Enable();
@@ -29,7 +29,7 @@ public class SCRPT_Pause : MonoBehaviour
         _movementEscape.started -= Escape;
         _movementEscape.Disable();
 
-    }
+    }*/
 
     public void Escape(InputAction.CallbackContext context)
     {

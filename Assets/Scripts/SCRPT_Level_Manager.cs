@@ -11,8 +11,10 @@ public class SCRPT_Level_Manager : MonoBehaviour
 
     private void Awake()
     {
+        int unlockedLevel = 0;
+
         ButtonsToArray();
-        int unlockedLevel = PlayerPrefs.GetInt("UnlockedLevel", 1);
+        unlockedLevel = PlayerPrefs.GetInt("UnlockedLevel", 1);
 
         for (int i = 0; i < buttons.Length; i++)
         {

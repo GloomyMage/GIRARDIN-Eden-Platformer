@@ -8,7 +8,6 @@ using UnityEngine.UI;
 
 public class DialogueController : MonoBehaviour
 {
-    [SerializeField] private TextMeshProUGUI NPCNameText;
     [SerializeField] private Image NPCFace;
     [SerializeField] private TextMeshProUGUI NPCDialogueText;
     [SerializeField] private float typeSpeed = 10;
@@ -53,7 +52,7 @@ public class DialogueController : MonoBehaviour
             {
 
                 //--------------- End Dialogue-------------
-                EndConversaiton();
+                EndConversation();
                 
             
                 return;
@@ -98,9 +97,7 @@ public class DialogueController : MonoBehaviour
 
         }
         NPCFace.sprite = dialogueText.NPCFace;
-        //---------------update the NPC's Name---------
-
-        NPCNameText.text = dialogueText.NPCName;
+  
         //---------------- add dialogue Text to the queue------------
         for (int i = 0; i < dialogueText.paragraphs.Length; i++)
         {
@@ -108,7 +105,7 @@ public class DialogueController : MonoBehaviour
             paragraphs.Enqueue(dialogueText.paragraphs[i]); 
         }
     }
-    private void EndConversaiton()
+    public void EndConversation()
     {
         //------------clear the Queue------------
         paragraphs.Clear();

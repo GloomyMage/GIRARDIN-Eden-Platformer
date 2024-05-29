@@ -9,7 +9,9 @@ public abstract class NPC : MonoBehaviour, IInteractable
     [SerializeField] private SpriteRenderer InteractSprite;
     private Transform PlayerTransform;
     private const float interactDistance = 2.5f;
-    
+    public DialogueController Skip;
+    public SCRPT_AudioManager AudioManager;
+
 
 
     private void Start()
@@ -22,12 +24,14 @@ public abstract class NPC : MonoBehaviour, IInteractable
     {
             
      
-        if (Input.GetButtonDown("Submit") && IsWithinInteractDistance())
+        if (Input.GetButtonDown("Chat") && IsWithinInteractDistance())
         {
             //-------------------Interaction with a NPC--------------
             Interact();
+            AudioManager.PlaySFX(AudioManager.SFXButton);
+
         }
-        if (InteractSprite.gameObject.activeSelf && !IsWithinInteractDistance())
+            if (InteractSprite.gameObject.activeSelf && !IsWithinInteractDistance())
         {
             // ----------------set interraction sprite OFF ----------------
             InteractSprite.gameObject.SetActive(false);

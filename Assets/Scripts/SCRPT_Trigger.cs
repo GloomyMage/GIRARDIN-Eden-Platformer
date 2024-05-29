@@ -6,6 +6,7 @@ public class SCRPT_Trigger : MonoBehaviour
 {
     public GameObject player;
     public GameObject Oni;
+    [SerializeField] bool alreadyPlayed;
 
 
     private void Awake()
@@ -16,9 +17,13 @@ public class SCRPT_Trigger : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player"))
+        if (!alreadyPlayed)
         {
-            Oni.gameObject.SetActive(true);
+            if (collision.CompareTag("Player"))
+            {
+                alreadyPlayed = true;
+                Oni.gameObject.SetActive(true);
+            }
         }
     }
 }

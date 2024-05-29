@@ -27,8 +27,8 @@ Transform:
   m_GameObject: {fileID: 7679785954293332353}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.5, z: 0}
-  m_LocalScale: {x: 4, y: 4, z: 1}
+  m_LocalPosition: {x: 0, y: 0.75, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7554242233245070993}
@@ -74,7 +74,7 @@ SpriteRenderer:
   m_SortingLayerID: 195607303
   m_SortingLayer: 8
   m_SortingOrder: 0
-  m_Sprite: {fileID: 10915, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 21300000, guid: 18c15faa879234749a4e11d1d57ea706, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -278,6 +278,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   InteractSprite: {fileID: 0}
+  Skip: {fileID: 0}
+  AudioManager: {fileID: 0}
   dialogueText: {fileID: 0}
   dialogueController: {fileID: 0}
 --- !u!114 &2152530888622473185

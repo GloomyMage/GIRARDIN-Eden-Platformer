@@ -118,10 +118,19 @@ public class SCRPT_Player_Movement : MonoBehaviour
 
         Player_Animator.SetFloat("Falling", (rb.velocity.y));
 
-        Player_Animator.SetFloat("Speed", Mathf.Abs(moveInput));
+        if (rb.velocity.y < 0)
+        {
+            rb.velocity += Vector2.up * Physics2D.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
+        }
+        else if (rb.velocity.y > 0 && !Input.GetButton("Jump"))
+        {
+            rb.velocity += Vector2.up * Physics2D.gravity.y * (lowJumpMultiplier - 1) * Time.deltaTime;
+        }
 
         if (canMove)
         {
+
+            Player_Animator.SetFloat("Speed", Mathf.Abs(moveInput));
 
             if (KBCounter <= 0)
             {
@@ -157,14 +166,7 @@ public class SCRPT_Player_Movement : MonoBehaviour
 
 
 
-            if (rb.velocity.y < 0)
-            {
-                rb.velocity += Vector2.up * Physics2D.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
-            }
-            else if (rb.velocity.y > 0 && !Input.GetButton("Jump"))
-            {
-                rb.velocity += Vector2.up * Physics2D.gravity.y * (lowJumpMultiplier - 1) * Time.deltaTime;
-            }
+            
 
 
             if (isGrounded == true && Input.GetButtonDown("Jump"))
@@ -508,11 +510,15 @@ public class SCRPT_Player_Movement : MonoBehaviour
     public void stopMovement()
     {
         canMove = false;
+        movement_speed = 0;
+        rb.velocity = Vector2.zero;
+        Player_Animator.SetFloat("Speed", 0);
     }
 
     public void playMovement()
     {
-        canMove = true; 
+        canMove = true;
+        movement_speed = 6f;
     }
 }
 
