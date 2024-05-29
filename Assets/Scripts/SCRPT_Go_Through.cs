@@ -10,6 +10,7 @@ public class SCRPT_Go_Through : MonoBehaviour
 
 
     private PlatformEffector2D effector;
+    [SerializeField] SpriteRenderer sprite_renderer;
     public float waitTime;
 
     private void Awake()
@@ -43,12 +44,18 @@ public class SCRPT_Go_Through : MonoBehaviour
 
     void Invisible(InputAction.CallbackContext context)
     {
-            effector.rotationalOffset = 180f;
-        }
+        effector.rotationalOffset = 180f;
+        Color col = sprite_renderer.color;
+        col.a = 0;
+        sprite_renderer.color = col;
+    }
 
     private void Visible(InputAction.CallbackContext context)
     {
-            effector.rotationalOffset = 0;
+        effector.rotationalOffset = 0;
+        Color col = sprite_renderer.color;
+        col.a = 0.8f;
+        sprite_renderer.color = col;
     }
 
   

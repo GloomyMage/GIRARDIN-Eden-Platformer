@@ -4,13 +4,12 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Rendering.Universal;
 
-public class SCRPT_Butterfly : MonoBehaviour
+public class SCRPT_Invisible : MonoBehaviour
 {
     public NewControls controls;
     private InputAction _movementInvisible;
 
     [SerializeField] SpriteRenderer sprite_renderer;
-    public Light2D Intensity;
 
 
     private void Awake()
@@ -20,10 +19,9 @@ public class SCRPT_Butterfly : MonoBehaviour
         Color col = sprite_renderer.color;
         col.a = 0;
         sprite_renderer.color = col;
-        Intensity.intensity = 0f;
     }
 
-   public void OnEnable()
+    public void OnEnable()
     {
 
         _movementInvisible = controls.Player.Invisible;
@@ -43,7 +41,7 @@ public class SCRPT_Butterfly : MonoBehaviour
         _movementInvisible.Disable();
 
     }
-   
+
 
 
     public void Invisible(InputAction.CallbackContext context)
@@ -52,7 +50,6 @@ public class SCRPT_Butterfly : MonoBehaviour
         Color col = sprite_renderer.color;
         col.a = 1;
         sprite_renderer.color = col;
-        Intensity.intensity = 100f;
     }
 
     public void Visible(InputAction.CallbackContext context)
@@ -60,9 +57,9 @@ public class SCRPT_Butterfly : MonoBehaviour
         Color col = sprite_renderer.color;
         col.a = 0;
         sprite_renderer.color = col;
-        Intensity.intensity = 0;
     }
 
 
 
 }
+

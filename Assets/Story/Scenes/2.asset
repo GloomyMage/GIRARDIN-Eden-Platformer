@@ -71,7 +71,8 @@ MonoBehaviour:
   - text: How do I do that? I did it purely by chance.
     speaker: {fileID: 11400000, guid: 755db819ff1a2ea4aa12594b5b3997b8, type: 2}
     actions: []
-  - text: Try to focus.
+  - text: Try to focus and channel all your energy onto your mind. Think like a ghost,
+      behave like a ghost and maybe you'll truly become one yourself.
     speaker: {fileID: 11400000, guid: eddfe009b49d3484d8dfb5498d6a2f17, type: 2}
     actions: []
   - text: Alright, I'll try. I just need to follow the butterflies then, is that
