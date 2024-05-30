@@ -249,34 +249,6 @@ public class SCRPT_Player_Movement : MonoBehaviour
         _movementTalk.Disable();
     }
 
-    //private void Jump(InputAction.CallbackContext context)
-    //{
-
-    //    if (isGrounded == true)
-    //    {
-    //        AudioManager.PlaySFX(AudioManager.SFXJump);
-    //        Jumping = true;
-    //        jumpTimeCounter = jumpTime;
-    //        rb.velocity = (Vector2.up * JumpAmount);
-    //    }
-
-    //    if (Jumping == true)
-    //    {
-    //        if (jumpTimeCounter > 0)
-    //        {
-    //            rb.velocity = (Vector2.up * JumpAmount);
-    //            jumpTimeCounter -= Time.deltaTime;
-    //        }
-    //        else
-    //        {
-    //            Jumping = false;
-    //        }
-
-
-    //    }
-
-    //}
-
     private void HoldJump(InputAction.CallbackContext context) {
 
         if (canMove) { 
@@ -332,7 +304,7 @@ public class SCRPT_Player_Movement : MonoBehaviour
                 col.a = 0.333f;
                 sprite_renderer.color = col;
                 Intensity.intensity = 0.15f;
-                Player_Animator.SetBool("Crouch", true);
+               // Player_Animator.SetBool("Crouch", true);
                 Physics2D.IgnoreLayerCollision(6, 7, true);
                 movement_speed = 0f;
                 JumpAmount = 0f;
@@ -350,7 +322,7 @@ public class SCRPT_Player_Movement : MonoBehaviour
         col.a = 1;
         sprite_renderer.color = col;
         Intensity.intensity = 1f;
-        Player_Animator.SetBool("Crouch", false);
+        // Player_Animator.SetBool("Crouch", false);
         Physics2D.IgnoreLayerCollision(6, 7, false);
         movement_speed = 6f;
         JumpAmount = 10f;
@@ -396,99 +368,6 @@ public class SCRPT_Player_Movement : MonoBehaviour
 
         KBCounter -= Time.deltaTime;
     }
-
-
-    
-        /*
-        // Go left
-        if (Input.GetKey(KeyCode.LeftArrow)) // While the left arrow is pressed
-        {
-            transform.Translate(Vector3.left * movement_speed * Time.deltaTime, Space.World); // Moves negatively on the X axis, therefore to the left
-            Player_Animator.SetBool("BoolRun", true); // Run animation is triggered
-            sprite_renderer.flipX = true; // Flips the Run animation on the X axis which is oriented to the right by default, therefore the animation is now oriented to the left
-
-
-
-        }
-        else if (Input.GetKeyUp(KeyCode.LeftArrow)) // When the left arrow isn't pressed anymore
-        {
-            transform.Translate(Vector3.left * movement_speed * Time.deltaTime, Space.World); // Moves negatively on the X axis, therefore to the left
-            Player_Animator.SetBool("BoolRun", true); // Run animation is triggered
-            sprite_renderer.flipX = true; // Flips the Run animation on the X axis which is oriented to the right by default, therefore the animation is now oriented to the left
-            Player_Animator.SetBool("BoolRun", false); // End of the run animation and go back to the idle animation
-        }
-
-
-        // Go right
-        if (Input.GetKey(KeyCode.RightArrow)) // While the right arrow is pressed
-        {
-            transform.Translate(Vector3.right * movement_speed * Time.deltaTime, Space.World);  // Moves positively on the X axis, therefore to the right
-            Player_Animator.SetBool("BoolRun", true); // Run animation is triggered
-            sprite_renderer.flipX = false; // The run animation doesn't need to be flipped because it is already facing to the right
-
-        }
-        else if (Input.GetKeyUp(KeyCode.RightArrow))  // When the right arrow isn't pressed anymore
-        {
-            transform.Translate(Vector3.right * movement_speed * Time.deltaTime, Space.World);  // Moves positively on the X axis, therefore to the right
-            Player_Animator.SetBool("BoolRun", true); // Run animation is triggered
-            sprite_renderer.flipX = false; // The run animation doesn't need to be flipped because it is already facing to the right
-            Player_Animator.SetBool("BoolRun", false); // End of the run animation and go back to the idle animation
-        }
-        */
-
-      
-
-
-        // Jump
-
-       
-
-
-        
-
-
-        /*
-        if (Input.GetKeyDown(KeyCode.Space) && Jumping == false)
-        {
-            rb.AddForce(Vector2.up * JumpAmount, ForceMode2D.Impulse);
-            Jumping = true;
-        }
-
-        if (Input.GetKeyDown(KeyCode.Space) && Jumping == false && Input.GetKey(KeyCode.LeftArrow))
-        {
-            rb.AddForce(Vector2.up * JumpAmount, ForceMode2D.Impulse);
-            Jumping = true;
-            transform.Translate(Vector3.left * movement_speed * Time.deltaTime, Space.World); // Moves negatively on the X axis, therefore to the left
-            Player_Animator.SetBool("BoolRun", true); // Run animation is triggered
-            sprite_renderer.flipX = true; // Flips the Run animation on the X axis which is oriented to the right by default, therefore the animation is now oriented to the left
-        }
-
-        if (Input.GetKeyDown(KeyCode.Space) && Jumping == false && Input.GetKey(KeyCode.RightArrow))
-        {
-            rb.AddForce(Vector2.up * JumpAmount, ForceMode2D.Impulse);
-            Jumping = true;
-            transform.Translate(Vector3.right * movement_speed * Time.deltaTime, Space.World);  // Moves positively on the X axis, therefore to the right
-            Player_Animator.SetBool("BoolRun", true); // Run animation is triggered
-            sprite_renderer.flipX = false; // The run animation doesn't need to be flipped because it is already facing to the right
-        }
-        */
-
-        /*
-        // VFX
-
-
-        // TrailVFX
-        */
-
-
-
-    //public void Jump(InputAction.CallbackContext context)
-    //{
-    //    if (context.performed)
-    //    {
-    //        rb.velocity = (Vector2.up * JumpAmount);
-    //    }
-    //}
 
     public void OnTriggerEnter2D(Collider2D Ground_Detector)
     {

@@ -52,7 +52,7 @@ public class GameController : MonoBehaviour
                     image.gameObject.SetActive(false);
                     player.canMove = true;
                     audioManager.PlaySFX(audioManager.SFXButton);
-                    Destroy(gameObject);
+                    this.gameObject.SetActive(false);
                 }
                 else
                 {
@@ -68,7 +68,7 @@ public class GameController : MonoBehaviour
             text.gameObject.SetActive(false);
             image.gameObject.SetActive(false);
             player.canMove = true;
-            Destroy(gameObject);
+            this.gameObject.SetActive(false);
         }
     }
 

@@ -193,7 +193,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NPCFace: {fileID: 6753196035410696799}
   NPCDialogueText: {fileID: 543556859344272485}
-  typeSpeed: 10
+  typeSpeed: 5
   AudioManager: {fileID: 0}
   CanMove: 1
   YouCanMove: {fileID: 0}

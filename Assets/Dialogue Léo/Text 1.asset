@@ -15,5 +15,15 @@ MonoBehaviour:
   NPCName: Meng Po
   NPCFace: {fileID: 21300000, guid: 85fc4dcb4c15fc148a137a3b0f05ee58, type: 3}
   paragraphs:
-  - Test
-  - AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+  - Are you ready to listen to me?
+  - 'Good, moving in Diyu might be different from what you''re usually used to.
+
+    You
+    can move with the <b>arrow keys</b> or a <b>joystick</b>.
+
+'
+  - 'You can jump by pressing the <b>space key</b> or the <b>south button</b>.
+
+    The
+    longer you hold the button, the higher you jump.'
+  - If you want me to repeat those informations, feel free to ask me again.

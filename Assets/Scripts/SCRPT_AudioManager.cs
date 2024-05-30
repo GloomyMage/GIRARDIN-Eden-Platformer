@@ -18,6 +18,7 @@ public class SCRPT_AudioManager : MonoBehaviour
     public AudioClip MusicLVL3;
     public AudioClip MusicLVL4;
     public AudioClip MusicLVL5;
+    public AudioClip MusicLVL6;
     public AudioClip MusicMenu;
     public AudioClip SFXJump;
     public AudioClip SFXLanding;
@@ -87,6 +88,11 @@ public class SCRPT_AudioManager : MonoBehaviour
         else if (sceneName == "SCN_Level_5")
         {
             musicSource.clip = MusicLVL5;
+            musicSource.Play();
+        }
+        else if (sceneName == "SCN_Level_6")
+        {
+            musicSource.clip = MusicLVL6;
             musicSource.Play();
         }
     }

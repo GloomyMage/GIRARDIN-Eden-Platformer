@@ -13,6 +13,11 @@ public class SCRPT_Button_Manager : MonoBehaviour
         SceneManager.LoadScene("SCN_Level_1");
     }
 
+    public void MainMenu() 
+    {
+        SceneManager.LoadScene("SCN_Main_Menu");
+    }
+
     public void ButtonOptions()
     {
         AudioManager.PlaySFX(AudioManager.SFXButton);

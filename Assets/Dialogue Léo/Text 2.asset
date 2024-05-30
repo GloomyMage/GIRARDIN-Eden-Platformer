@@ -15,5 +15,16 @@ MonoBehaviour:
   NPCName: Meng Po
   NPCFace: {fileID: 21300000, guid: 85fc4dcb4c15fc148a137a3b0f05ee58, type: 3}
   paragraphs:
-  - Test
-  - AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+  - You don't know how to vanish, do you?
+  - Very well, you need to focus by holding the <b>down arrow</b> or the <b>east
+    button</b>.
+  - 'However, it requires a lot of energy.
+
+    You might not be able to move in
+    his state, be sure to use your power wisely.'
+  - 'I will give you a few more hints.
+
+    Those green monsters are blindfolded,
+    they won''t notice you unless you make contact with them.'
+  - But, I've heard of a furious red monster who will hunt down their prey. Please
+    be wary.

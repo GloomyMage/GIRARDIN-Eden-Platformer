@@ -29,6 +29,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/SCN_Level_6.unity
     guid: 01c306c6078e5a0459d82a1b6787c9bf
+  - enabled: 1
+    path: Assets/Scenes/SCN_Credits.unity
+    guid: 0c5ae7154514b1c4d8cff4c63710aab1
   - enabled: 0
     path: Assets/Scenes/SCN_Test.unity
     guid: a02290c09f47a3f45b60af70f7aabbcc

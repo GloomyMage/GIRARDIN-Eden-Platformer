@@ -10,7 +10,7 @@ public class DialogueController : MonoBehaviour
 {
     [SerializeField] private Image NPCFace;
     [SerializeField] private TextMeshProUGUI NPCDialogueText;
-    [SerializeField] private float typeSpeed = 10;
+    [SerializeField] private float typeSpeed = 5f;
     public SCRPT_AudioManager AudioManager;
 
     private Queue<string> paragraphs = new Queue<string>();
