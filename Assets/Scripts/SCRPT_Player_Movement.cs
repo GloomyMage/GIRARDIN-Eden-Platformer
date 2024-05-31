@@ -299,12 +299,13 @@ public class SCRPT_Player_Movement : MonoBehaviour
         {
             if (sceneName != "SCN_Level_1")
             {
+                Player_Animator.SetBool("Crouch", true);
+                Player_Animator.SetFloat("Speed", 0);
                 AudioManager.PlaySFX(AudioManager.SFXTransparent);
                 Color col = sprite_renderer.color;
                 col.a = 0.333f;
                 sprite_renderer.color = col;
                 Intensity.intensity = 0.15f;
-               // Player_Animator.SetBool("Crouch", true);
                 Physics2D.IgnoreLayerCollision(6, 7, true);
                 movement_speed = 0f;
                 JumpAmount = 0f;
@@ -322,7 +323,7 @@ public class SCRPT_Player_Movement : MonoBehaviour
         col.a = 1;
         sprite_renderer.color = col;
         Intensity.intensity = 1f;
-        // Player_Animator.SetBool("Crouch", false);
+        Player_Animator.SetBool("Crouch", false);
         Physics2D.IgnoreLayerCollision(6, 7, false);
         movement_speed = 6f;
         JumpAmount = 10f;
