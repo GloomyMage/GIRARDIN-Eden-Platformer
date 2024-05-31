@@ -96,7 +96,7 @@ MonoBehaviour:
   - text: You are quick-witted, that's right, you'll have to retry your current trial.
     speaker: {fileID: 11400000, guid: eddfe009b49d3484d8dfb5498d6a2f17, type: 2}
     actions: []
-  - text: This seems though...
+  - text: This seems tough...
     speaker: {fileID: 11400000, guid: 755db819ff1a2ea4aa12594b5b3997b8, type: 2}
     actions: []
   - text: See that standard over there with a lantern? Once you get to it, you'll
