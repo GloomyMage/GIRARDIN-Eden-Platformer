@@ -837,8 +837,8 @@ PlayerSettings:
   apiCompatibilityLevelPerPlatform: {}
   m_RenderingPath: 1
   m_MobileRenderingPath: 1
-  metroPackageName: GIRARDIN Eden Platformer
-  metroPackageVersion: 
+  metroPackageName: GIRARDINEdenPlatformer
+  metroPackageVersion: 1.0.0.0
   metroCertificatePath: 
   metroCertificatePassword: 
   metroCertificateSubject: 
@@ -846,7 +846,7 @@ PlayerSettings:
   metroCertificateNotAfter: 0000000000000000
   metroApplicationDescription: GIRARDIN Eden Platformer
   wsaImages: {}
-  metroTileShortName: 
+  metroTileShortName: GIRARDIN Eden Platformer
   metroTileShowName: 0
   metroMediumTileShowName: 0
   metroLargeTileShowName: 0
